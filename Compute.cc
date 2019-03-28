@@ -38,17 +38,18 @@ COMPLEX evalHelper(int p, COMPLEX (*coef)(int), const COMPLEX& z, int k, int d) 
 	COMPLEX result(0);
 	COMPLEX pow(1);
 	COMPLEX cur;
-	INTEGER a;
+	INTEGER diffTerm(1);
 	int t = k-p + 32*d;
+	
+	for(int i = 2;i<=d;i++)
+		diffTerm*=i;
 
 	for(int i = 0; i<=t;i++) {
-		cur = coef(i+d)*pow;
-		for(int j=d+i;j>i;j--) {
-			a=a*INTEGER(j);
-			cur = cur*COMPLEX(j);
-		}
-		cur=cur*COMPLEX(a);
+		cur = (coef(i+d)*pow)*diffTerm;
 		result = result + cur;
+
+		diffTerm/=(i+1);
+		diffTerm*=(i+d+1);
 		pow =pow * z;
 	}
 	return result;
@@ -70,7 +71,7 @@ void compute()
 {
 	COMPLEX result;
 	cout<<setRwidth(50);
-	result = eval(seq,COMPLEX(REAL(0.5),pi()),1,50);
+	result = eval(seq,COMPLEX(REAL(0),pi()),1,1000);
 	cout<<result._real<<" + "<<result._imag<<" i\n";
 	return;
 }
