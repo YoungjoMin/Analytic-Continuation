@@ -30,12 +30,12 @@ COMPLEX ANALYTIC::evalHelper(int p, int d, const COMPLEX& z) {
 	 For |z| <= 1/2k,  where k given in the Constructor
 */
 COMPLEX ANALYTIC::eval(int d, const COMPLEX& z) {
-	static ANALYTIC Tf(*this);
+	static ANALYTIC * Tfp;
 	static int Td;
-	Tf = *this;
+	Tfp = this;
 	Td = d;
 	COMPLEX (*lambda)(int, const COMPLEX& z)  = ([] (int p, const COMPLEX& z) {
-			return Tf.evalHelper(p,Td, z);
+			return Tfp->evalHelper(p,Td, z);
 	});
 
 	return limit(lambda,z);

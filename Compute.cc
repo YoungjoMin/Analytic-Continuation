@@ -69,7 +69,6 @@ COMPLEX eval(COMPLEX(*coef)(int), const COMPLEX& z, int k, int d) {
 	Td = d;
 	
 	COMPLEX(*lambda)(int, const COMPLEX&)  =  ([] (int p, const COMPLEX& z) -> COMPLEX {
-			std::cout<<p<<std::endl;
 			return evalHelper(p,Tcoef,z,Tk,Td); });
 
 	return limit( lambda , z);
@@ -85,13 +84,20 @@ void compute()
 		cout<<"using taylor series\n";
 	  cout<<result._real<<" + "<<result._imag<<" i\n";
 		result = COMPLEX(1)/(COMPLEX(1)-pos[i]);
-		cout<<"using 1/x\n";
+		cout<<"using 1/1-x\n";
 	  cout<<result._real<<" + "<<result._imag<<" i\n\n\n";
 	}
 	for(int i=0;i<5;i++) {
 		result= f.eval(1,pos[i]);
 		cout<<"using taylor series\n";
 	  cout<<result._real<<" + "<<result._imag<<" i\n";
+
+		result = COMPLEX(1)-pos[i];
+		result = result*result;
+		result = COMPLEX(1)/result;
+		cout<<"using 1/(1-x)^2\n";
+	  cout<<result._real<<" + "<<result._imag<<" i\n\n\n";
+
 	}
 
 
@@ -99,13 +105,30 @@ void compute()
 
 void compute1()
 {
+
 	ANALYTIC f(seq,1);
 	COMPLEX result;
+	cout<<"f = e^x\n";
 	cout<<setRwidth(50);
-	result = eval(seq,COMPLEX(REAL(0),pi()),1,0);
-	cout<<result._real<<" + "<<result._imag<<" i\n";
+	result = eval(seq,COMPLEX(REAL(0),pi()),1,100);
+	cout<<"D^100 f(0+pi i) = \n";
+	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+
+	result = f.eval(0, COMPLEX(REAL(0),REAL(0)));
+	cout<<"f(0) = \n";
+	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+
 	result = f.eval(0, COMPLEX(REAL(0),pi()));
-	cout<<result._real<<" + "<<result._imag<<" i\n";
+	cout<<"f(0+pi i) = \n";
+	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+
+	result = f.eval(1, COMPLEX(REAL(0.25),REAL(0.25)));
+	cout<<"D^1 f(0.25+0.25i) = \n";
+	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+
+	result = f.eval(1000, COMPLEX(REAL(0),REAL(0.5)));
+	cout<<"D^1000 f(0.5 i) = \n";
+	cout<<result._real<<" + "<<result._imag<<" i\n\n";
 	return;
 }
 
