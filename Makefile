@@ -1,32 +1,5 @@
 # Makefile for user_programs
 
-prefix=/home/norbert/real/current
-exec_prefix=${prefix}
+all:
+        g++ -std=c++11 -g -O2 -I/home/hyunwoo/iRRAM/installed/include -Xlinker -rpath -Xlinker /home/hyunwoo/iRRAM/installed/lib  Compute.cc  -L/home/hyunwoo/iRRAM/installed/lib -liRRAM -lmpfr -lgmp -lm -lpthread -o Compute
 
-CC = gcc
-CFLAGS = -g -O2 -Wall -Wno-implicit -Wmissing-prototypes
-CPP = gcc -E
-CPPFLAGS =  -I${prefix}/include
-CXX = g++
-CXXCPP = g++ -E
-CXXFLAGS = -g -O2 -Wall
-LDFLAGS = -Xlinker -rpath -Xlinker ${exec_prefix}/lib64
-LDLIBS =  -L${exec_prefix}/lib64 -liRRAM -lmpfr -lm -lgmp -lpthread
-
-SOURCE = Poly Compute ANAYTIC
-OBJECT = Poly.o Compute.o ANALYTIC.o
-
-.PHONY: clean
-all:	Link
-
-Link: $(OBJECT)
-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJECT) $(LDLIBS)
-
-Poly.o: Poly.cc Poly.h
-	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $(LDFLAGS) Poly.cc $(LDLIBS)
-
-Compute.o: Compute.cc
-	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $(LDFLAGS) Compute.cc $(LDLIBS)
-
-clean:
-	for i in *.o ; do rm -vf `basename $$i .c` ; done;
