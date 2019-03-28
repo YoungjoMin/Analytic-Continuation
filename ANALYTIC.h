@@ -6,12 +6,13 @@ namespace iRRAM {
 class ANALYTIC
 {
 public:
-ANALYTIC(REAL (*seq)(int), int k);
-REAL operator () (const REAL& z);
+ANALYTIC(COMPLEX (*seq)(int), int k);
+COMPLEX eval(int d, const COMPLEX& z);
 
 private:
-REAL (*eval)(int, REAL);
-REAL (*coef)(int);
+COMPLEX evalHelper(int p, int d, const COMPLEX& z);
+
+COMPLEX (*coef)(int);
 int k;
 };
 
