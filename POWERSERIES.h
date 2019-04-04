@@ -2,6 +2,7 @@
 
 # include "iRRAM/lib.h"
 # include <functional>
+# include <algorithm>
 
 
 namespace iRRAM {
@@ -11,13 +12,17 @@ using COEF = std::function<COMPLEX(int)>;
 class POWERSERIES
 {
 public:
+POWERSERIES();
 POWERSERIES(COEF coef, int k);
 POWERSERIES(COMPLEX(*coef)(int), int k);
-POWERSERIES(const POWERSERIES& f);
 
 friend POWERSERIES operator +(const POWERSERIES& f1, const POWERSERIES& f2);//TODO
+friend POWERSERIES operator -(const POWERSERIES& f1, const POWERSERIES& f2);//TODO
 friend POWERSERIES operator *(const POWERSERIES& f1, const POWERSERIES& f2);//TODO
-void operator+=(const POWERSERIES& f);
+
+POWERSERIES& operator+=(const POWERSERIES& f);
+POWERSERIES& operator-=(const POWERSERIES& f);
+POWERSERIES& operator*=(const POWERSERIES& f);
 
 
 COMPLEX eval(const COMPLEX& z, int d=0);

@@ -3,101 +3,167 @@
 
 using namespace iRRAM;
 
-COMPLEX invXSeq(int k) {
+
+COMPLEX IdentitySeq(int k) {
+	return (k==1 ? COMPLEX(1) : COMPLEX(0));
+}
+COMPLEX InvXSeq(int k) {
 	return COMPLEX(1);
 }
 
-COMPLEX seq(int k) {
-	static REAL prevSeq;
-	static int prevK;
-	REAL a(1);
-	int i=2;
-
-	if(k<=1)
-		return COMPLEX(1);
-
-	if(prevK<k) {
-		a = prevSeq;
-		i = prevK+1;
-	}
-	for(;i<=k;i++)
-			a/=i;
-
-	prevSeq = a;
-	prevK = k;
-	return COMPLEX(a);
-}
-/*
-COMPLEX seq(int k) {
-	REAL a(1);
+COMPLEX ExpSeq(int k) {
+	INTEGER a(1);
 	if(k<=1)
 		return COMPLEX(1);
 	for(int i=2;i<=k;i++)
-		a/=i;
-	return COMPLEX(a);
+		a*=i;
+	return COMPLEX(REAL(1)/REAL(a));
 }
-*/
+void myPrint(COMPLEX z) {
+	cout<<z._real<<" + "<<z._imag<<" i\n";
+}
 
-void compute2()
-{
-	COMPLEX pos[5]= {COMPLEX(0.5), COMPLEX(-0.5), COMPLEX(REAL(0),REAL(0.5)),
-									COMPLEX(0, REAL(-0.5)), COMPLEX(pi()/8)};
-	POWERSERIES f(invXSeq,1);
-	COMPLEX result;
-	for(int i=0;i<5;i++) {
-		result = f.eval(pos[i]);
-		cout<<"using taylor series\n";
-	  cout<<result._real<<" + "<<result._imag<<" i\n";
-		result = COMPLEX(1)/(COMPLEX(1)-pos[i]);
-		cout<<"using 1/1-x\n";
-	  cout<<result._real<<" + "<<result._imag<<" i\n\n\n";
-	}
-	for(int i=0;i<5;i++) {
-		result= f.eval(pos[i],1);
-		cout<<"using taylor series\n";
-	  cout<<result._real<<" + "<<result._imag<<" i\n";
+void valueTest() {
+	int numOfFunc = 3;
+	COEF coefList[] = {IdentitySeq, InvXSeq, ExpSeq};
+	int  kList[]    = {1, 1, 1};
 
-		result = COMPLEX(1)-pos[i];
-		result = result*result;
-		result = COMPLEX(1)/result;
-		cout<<"using 1/(1-x)^2\n";
-	  cout<<result._real<<" + "<<result._imag<<" i\n\n\n";
+	int numOfComplex = 5;
+	COMPLEX complexList[] = {COMPLEX(0.1), COMPLEX(0.1,0.1), COMPLEX(0,-0.2),COMPLEX(0), 
+		COMPLEX(-0.1,-0.1)};
 
+	cout<<setRwidth(40);
+
+	POWERSERIES * f = new POWERSERIES[numOfFunc];
+	for(int i = 0;i<numOfFunc;i++) {
+		f[i] = POWERSERIES(coefList[i], kList[i]);
 	}
 
+	for(int i = 0;i<numOfFunc;i++) {
+		for(int j = 0;j<numOfFunc;j++) {
+			for(int k = 0;k<numOfComplex;k++) {
+				POWERSERIES &g = f[i];
+				POWERSERIES &h = f[j];
+				COMPLEX &x = complexList[k];
+
+				COMPLEX gx = g.eval(x);
+				COMPLEX hx = h.eval(x);
+				COMPLEX addghx = (g+h).eval(x);
+				COMPLEX subghx = (g-h).eval(x);
+				COMPLEX mulghx = (g*h).eval(x);
+
+				if(!bound(abs(gx+hx - addghx),-50)) {
+					std::cout<<"error at (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
+					cout<<abs(gx+hx-addghx)<<"\n";
+					cout<<(gx+hx)._real <<"\n"<<(gx+hx)._imag<<"\n";
+					cout<<(addghx)._real <<"\n"<<(addghx)._imag<<"\n";
+				}
+				if(!bound(abs(gx-hx - subghx),-50)) {
+					std::cout<<"error at (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
+					cout<<abs(gx-hx-subghx)<<"\n";
+					cout<<(gx-hx)._real <<"\n"<<(gx-hx)._imag<<"\n";
+					cout<<(subghx)._real <<"\n"<<(subghx)._imag<<"\n";
+				}
+				if(!bound(abs(gx*hx - mulghx),-50)) {
+					std::cout<<"error at (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
+					cout<<abs(gx*hx-mulghx)<<"\n";
+					cout<<(gx*hx)._real <<"\n"<<(gx*hx)._imag<<"\n";
+					cout<<(mulghx)._real <<"\n"<<(mulghx)._imag<<"\n";
+				}
+
+				std::cout<<"("<<i<<", "<<j<<", "<<k<<") endd\n";
+			}
+		}
+	}
+	
+	std::cout<<"testEnd"<<std::endl;
+}
+
+void removeTest() {
+
+	COMPLEX z(REAL(0.5));
+	POWERSERIES * f = new POWERSERIES(ExpSeq,1);
+	POWERSERIES * g = new POWERSERIES(InvXSeq,1);
+
+	POWERSERIES sum = (*f)+(*g);
+	POWERSERIES sub = (*f)-(*g);
+	POWERSERIES mul = (*f)*(*g);
+
+	COMPLEX beforeSum = sum.eval(z);
+	COMPLEX beforeSub = sub.eval(z);
+	COMPLEX beforeMul = mul.eval(z);
+
+	delete f;
+	delete g;
+
+	COMPLEX afterSum = sum.eval(z);
+	COMPLEX afterSub = sub.eval(z);
+	COMPLEX afterMul = mul.eval(z);
+
+	cout<<beforeSum._real<<"\n";
+	cout<<afterSum._real<<"\n";
+	cout<<beforeSub._real<<"\n";
+	cout<<afterSub._real<<"\n";
+	cout<<beforeMul._real<<"\n";
+	cout<<afterMul._real<<"\n";
 
 }
 
-void compute1()
-{
+void modifyTest() {
 
-	POWERSERIES f(seq,1);
-	COMPLEX result;
-	cout<<"f = e^x\n";
-	cout<<setRwidth(50);
-	result = f.eval(COMPLEX(REAL(0),pi()),100);
-	cout<<"D^100 f(0+pi i) = \n";
-	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+	COMPLEX z(REAL(0.5));
+	POWERSERIES f(ExpSeq,1);
+	POWERSERIES g(InvXSeq,1);
 
-	result = f.eval(COMPLEX(REAL(0),REAL(0)));
-	cout<<"f(0) = \n";
-	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+	POWERSERIES sum = f+g;
+	POWERSERIES sub = f-g;
+	POWERSERIES mul = f*g;
 
-	result = f.eval(COMPLEX(REAL(0),pi()));
-	cout<<"f(0+pi i) = \n";
-	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+	COMPLEX beforeSum = sum.eval(z);
+	COMPLEX beforeSub = sub.eval(z);
+	COMPLEX beforeMul = mul.eval(z);
 
-	result = f.eval(COMPLEX(REAL(0.25),REAL(0.25)), 1);
-	cout<<"D^1 f(0.25+0.25i) = \n";
-	cout<<result._real<<" + "<<result._imag<<" i\n\n";
+	f = POWERSERIES(IdentitySeq,1);
+	g = POWERSERIES(InvXSeq,1);
 
-	result = f.eval(COMPLEX(REAL(0),REAL(0.5)), 1000);
-	cout<<"D^1000 f(0.5 i) = \n";
-	cout<<result._real<<" + "<<result._imag<<" i\n\n";
-	return;
+	COMPLEX afterSum = sum.eval(z);
+	COMPLEX afterSub = sub.eval(z);
+	COMPLEX afterMul = mul.eval(z);
+
+	cout<<beforeSum._real<<"\n";
+	cout<<afterSum._real<<"\n";
+	cout<<beforeSub._real<<"\n";
+	cout<<afterSub._real<<"\n";
+	cout<<beforeMul._real<<"\n";
+	cout<<afterMul._real<<"\n";
 }
+
+void arithmeticAssignmentTest() {
+	COMPLEX z(0.5);
+	POWERSERIES f(ExpSeq,1);
+	POWERSERIES g(InvXSeq,1);
+
+	cout<< "f(z) = "<<f.eval(z)._real<<"\n";
+	cout<< "g(z) = "<<g.eval(z)._real<<"\n";
+
+	f +=g;
+	cout<< "f += g\n";
+	cout<< "f(z) = "<<f.eval(z)._real<<"\n";	
+
+	f -=g;
+	cout<< "f -= g\n";
+	cout<< "f(z) = "<<f.eval(z)._real<<"\n";
+	
+	f *=g;
+	cout<< "f *= g\n";
+	cout<< "f(z) = "<<f.eval(z)._real<<"\n";
+	cout<< "f(z)/2 = "<<(f.eval(z)/2)._real<<"\n";
+}
+
 void compute()
 {
-	compute1();
-	compute2();
+	modifyTest();
+	removeTest();
+	valueTest();
+	arithmeticAssignmentTest();
 }
