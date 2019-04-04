@@ -1,5 +1,5 @@
 # include "iRRAM.h"
-# include "./ANALYTIC.h"
+# include "./POWERSERIES.h"
 
 using namespace iRRAM;
 
@@ -38,49 +38,14 @@ COMPLEX seq(int k) {
 }
 */
 
-COMPLEX evalHelper(int p, COMPLEX (*coef)(int), const COMPLEX& z, int k, int d) {
-	COMPLEX result(0);
-	COMPLEX pow(1);
-	COMPLEX cur;
-	INTEGER diffTerm(1);
-	int t = k-p + 32*d;
-
-	for(int i = 2;i<=d;i++)
-		diffTerm*=i;
-
-	for(int i = 0; i<=t;i++) {
-		cur = coef(i+d)*pow*diffTerm;
-		result = result + cur;
-
-		diffTerm*= (i+d+1);
-		diffTerm/=(i+1);
-		pow =pow * z;
-	}
-	return result;
-}
-
-COMPLEX eval(COMPLEX(*coef)(int), const COMPLEX& z, int k, int d) {
-	
-	static COMPLEX (*Tcoef)(int);
-	static int Tk;
-	static int Td;
-	Tcoef = coef;
-	Tk = k;
-	Td = d;
-	
-	COMPLEX(*lambda)(int, const COMPLEX&)  =  ([] (int p, const COMPLEX& z) -> COMPLEX {
-			return evalHelper(p,Tcoef,z,Tk,Td); });
-
-	return limit( lambda , z);
-}
-void compute()
+void compute2()
 {
 	COMPLEX pos[5]= {COMPLEX(0.5), COMPLEX(-0.5), COMPLEX(REAL(0),REAL(0.5)),
 									COMPLEX(0, REAL(-0.5)), COMPLEX(pi()/8)};
-	ANALYTIC f(invXSeq,1);
+	POWERSERIES f(invXSeq,1);
 	COMPLEX result;
 	for(int i=0;i<5;i++) {
-		result = f.eval(0,pos[i]);
+		result = f.eval(pos[i]);
 		cout<<"using taylor series\n";
 	  cout<<result._real<<" + "<<result._imag<<" i\n";
 		result = COMPLEX(1)/(COMPLEX(1)-pos[i]);
@@ -88,7 +53,7 @@ void compute()
 	  cout<<result._real<<" + "<<result._imag<<" i\n\n\n";
 	}
 	for(int i=0;i<5;i++) {
-		result= f.eval(1,pos[i]);
+		result= f.eval(pos[i],1);
 		cout<<"using taylor series\n";
 	  cout<<result._real<<" + "<<result._imag<<" i\n";
 
@@ -106,29 +71,33 @@ void compute()
 void compute1()
 {
 
-	ANALYTIC f(seq,1);
+	POWERSERIES f(seq,1);
 	COMPLEX result;
 	cout<<"f = e^x\n";
 	cout<<setRwidth(50);
-	result = eval(seq,COMPLEX(REAL(0),pi()),1,100);
+	result = f.eval(COMPLEX(REAL(0),pi()),100);
 	cout<<"D^100 f(0+pi i) = \n";
 	cout<<result._real<<" + "<<result._imag<<" i\n\n";
 
-	result = f.eval(0, COMPLEX(REAL(0),REAL(0)));
+	result = f.eval(COMPLEX(REAL(0),REAL(0)));
 	cout<<"f(0) = \n";
 	cout<<result._real<<" + "<<result._imag<<" i\n\n";
 
-	result = f.eval(0, COMPLEX(REAL(0),pi()));
+	result = f.eval(COMPLEX(REAL(0),pi()));
 	cout<<"f(0+pi i) = \n";
 	cout<<result._real<<" + "<<result._imag<<" i\n\n";
 
-	result = f.eval(1, COMPLEX(REAL(0.25),REAL(0.25)));
+	result = f.eval(COMPLEX(REAL(0.25),REAL(0.25)), 1);
 	cout<<"D^1 f(0.25+0.25i) = \n";
 	cout<<result._real<<" + "<<result._imag<<" i\n\n";
 
-	result = f.eval(1000, COMPLEX(REAL(0),REAL(0.5)));
+	result = f.eval(COMPLEX(REAL(0),REAL(0.5)), 1000);
 	cout<<"D^1000 f(0.5 i) = \n";
 	cout<<result._real<<" + "<<result._imag<<" i\n\n";
 	return;
 }
-
+void compute()
+{
+	compute1();
+	compute2();
+}

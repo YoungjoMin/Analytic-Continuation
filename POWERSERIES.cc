@@ -1,10 +1,11 @@
-# include "ANALYTIC.h"
+# include "POWERSERIES.h"
 
 namespace iRRAM{
 
-ANALYTIC::ANALYTIC(COMPLEX(*seq)(int), int k) : coef(seq), k(k) {}
+POWERSERIES::POWERSERIES(COEF coef, int k) : coef(coef), k(k) {}
+POWERSERIES::POWERSERIES(COMPLEX(*coef)(int), int k) : coef(coef), k(k) {}
 
-COMPLEX ANALYTIC::evalHelper(int p, int d, const COMPLEX& z) {
+COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z, int d) {
 	COMPLEX result(0);
 	COMPLEX pow(1);
 	COMPLEX cur;
@@ -29,13 +30,13 @@ COMPLEX ANALYTIC::evalHelper(int p, int d, const COMPLEX& z) {
 /*
 	 For |z| <= 1/2k,  where k given in the Constructor
 */
-COMPLEX ANALYTIC::eval(int d, const COMPLEX& z) {
-	static ANALYTIC * Tfp;
+COMPLEX POWERSERIES::eval(const COMPLEX& z, int d) {
+	static POWERSERIES * Tfp;
 	static int Td;
 	Tfp = this;
 	Td = d;
 	COMPLEX (*lambda)(int, const COMPLEX& z)  = ([] (int p, const COMPLEX& z) {
-			return Tfp->evalHelper(p,Td, z);
+			return Tfp->evalHelper(p,z, Td);
 	});
 
 	return limit(lambda,z);

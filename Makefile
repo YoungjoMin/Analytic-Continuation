@@ -13,14 +13,17 @@ CXXFLAGS = -g -O2
 LDFLAGS = -Xlinker -rpath -Xlinker ${exec_prefix}/lib
 LDLIBS =  -L${exec_prefix}/lib -liRRAM -lmpfr -lgmp -lm -lpthread
 
-SOURCE = Compute ANAYTIC
-OBJECT = Compute.o ANALYTIC.o
+SOURCE = POWERSERIES Compute 
+OBJECT = POWERSERIES.o Compute.o
 
 .PHONY: clean
 all:	Link
 
 Link: $(OBJECT)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJECT) $(LDLIBS)
+
+POWERSERIES.o: POWERSERIES.cc POWERSERIES.h
+	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $(LDFLAGS) POWERSERIES.cc $(LDLIBS)
 
 ANALYTIC.o: ANALYTIC.cc ANALYTIC.h
 	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $(LDFLAGS) ANALYTIC.cc $(LDLIBS)
@@ -29,4 +32,4 @@ Compute.o: Compute.cc
 	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $(LDFLAGS) Compute.cc $(LDLIBS)
 
 clean:
-	for i in *.o ; do rm -vf `basename $$i .c` ; done;
+	rm *.o;rm *.out;
