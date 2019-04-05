@@ -83,4 +83,44 @@ POWERSERIES& POWERSERIES::operator *=(const POWERSERIES& f) {
 }
 
 
+POWERSERIES POWERSERIES::differentiateHelper(int d) {
+	COEF seq = ([=] (int j) -> COMPLEX {
+			INTEGER diffTerm(1);
+			for(int i = 1;i<=d;i++)
+			    diffTerm*=(i+j);
+			return (coef(j+d))*diffTerm;
+			});
+	int k1 = k + round((log(REAL(k)*REAL(d))/ln2())*d + REAL(0.5));
+	int k2 =  round((exp(REAL(1))*k) + REAL(0.5));
+	int newK = std::max(k1,k2);
+	return POWERSERIES(seq,newK);
+}
+
+POWERSERIES POWERSERIES::integralHelper(int d) {
+	COEF seq = ([=] (int j) -> COMPLEX {
+			if(j<d)
+				return COMPLEX(0);
+
+			INTEGER intTerm(1);
+			for(int i = 0;i<d;i++)
+					intTerm*=(j-i);
+			return (coef(j-d))/intTerm;
+			});
+	return POWERSERIES(seq,k);
+}
+
+POWERSERIES POWERSERIES::differentiate(int d) {
+	if(d==0)
+		return *this;
+	if(d>0)
+		return this->differentiateHelper(d);
+	else
+		return this->integralHelper(-d);
+}
+POWERSERIES POWERSERIES::continuation(const COMPLEX& z, int newK) {
+	COEF seq = ([=] (int j) -> COMPLEX {
+				return this->eval(z,j);
+			});
+	return POWERSERIES(seq,newK);
+}
 } //namespace iRRAM

@@ -28,9 +28,11 @@ void valueTest() {
 	COEF coefList[] = {IdentitySeq, InvXSeq, ExpSeq};
 	int  kList[]    = {1, 1, 1};
 
-	int numOfComplex = 5;
+	int numOfComplex = 2;//5;
 	COMPLEX complexList[] = {COMPLEX(0.1), COMPLEX(0.1,0.1), COMPLEX(0,-0.2),COMPLEX(0), 
 		COMPLEX(-0.1,-0.1)};
+	int numOfD = 2;//4;
+	int DList[] = {1, 5, 10, 100};
 
 	cout<<setRwidth(40);
 
@@ -40,37 +42,29 @@ void valueTest() {
 	}
 
 	for(int i = 0;i<numOfFunc;i++) {
-		for(int j = 0;j<numOfFunc;j++) {
-			for(int k = 0;k<numOfComplex;k++) {
+		for(int j = 0;j<numOfComplex;j++) {
+			for(int k = 0;k<numOfD;k++) {
 				POWERSERIES &g = f[i];
-				POWERSERIES &h = f[j];
-				COMPLEX &x = complexList[k];
-
-				COMPLEX gx = g.eval(x);
-				COMPLEX hx = h.eval(x);
-				COMPLEX addghx = (g+h).eval(x);
-				COMPLEX subghx = (g-h).eval(x);
-				COMPLEX mulghx = (g*h).eval(x);
-
-				if(!bound(abs(gx+hx - addghx),-50)) {
-					std::cout<<"error at (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
-					cout<<abs(gx+hx-addghx)<<"\n";
-					cout<<(gx+hx)._real <<"\n"<<(gx+hx)._imag<<"\n";
-					cout<<(addghx)._real <<"\n"<<(addghx)._imag<<"\n";
+				COMPLEX &x = complexList[j];
+				int curD = DList[k];
+				
+				COMPLEX intgx = g.eval(x,-curD);
+				COMPLEX diffgx = g.eval(x,curD);
+				COMPLEX diffgx2 = (g.differentiate(curD)).eval(x);
+				COMPLEX intgx2 = (g.differentiate(-curD)).eval(x);
+				
+				if(!bound(abs(intgx - intgx2),-50)) {
+					std::cout<<"error at integrate (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
+					cout<<abs(intgx - intgx2)<<"\n";
+					cout<<(intgx)._real <<"\n"<<(intgx)._imag<<" i\n";
+					cout<<(intgx2)._real <<"\n"<<(intgx2)._imag<<" i\n";
 				}
-				if(!bound(abs(gx-hx - subghx),-50)) {
-					std::cout<<"error at (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
-					cout<<abs(gx-hx-subghx)<<"\n";
-					cout<<(gx-hx)._real <<"\n"<<(gx-hx)._imag<<"\n";
-					cout<<(subghx)._real <<"\n"<<(subghx)._imag<<"\n";
+				if(!bound(abs(diffgx - diffgx2),-50)) {
+					std::cout<<"error at differentiate(i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
+					cout<<abs(diffgx - diffgx2)<<"\n";
+					cout<<(diffgx)._real <<"\n"<<(diffgx)._imag<<" i\n";
+					cout<<(diffgx2)._real <<"\n"<<(diffgx2)._imag<<" i\n";
 				}
-				if(!bound(abs(gx*hx - mulghx),-50)) {
-					std::cout<<"error at (i,j,k) = ("<<i<<", "<<j<<", "<<k<<")\n";
-					cout<<abs(gx*hx-mulghx)<<"\n";
-					cout<<(gx*hx)._real <<"\n"<<(gx*hx)._imag<<"\n";
-					cout<<(mulghx)._real <<"\n"<<(mulghx)._imag<<"\n";
-				}
-
 				std::cout<<"("<<i<<", "<<j<<", "<<k<<") endd\n";
 			}
 		}
@@ -138,32 +132,10 @@ void modifyTest() {
 	cout<<afterMul._real<<"\n";
 }
 
-void arithmeticAssignmentTest() {
-	COMPLEX z(0.5);
-	POWERSERIES f(ExpSeq,1);
-	POWERSERIES g(InvXSeq,1);
-
-	cout<< "f(z) = "<<f.eval(z)._real<<"\n";
-	cout<< "g(z) = "<<g.eval(z)._real<<"\n";
-
-	f +=g;
-	cout<< "f += g\n";
-	cout<< "f(z) = "<<f.eval(z)._real<<"\n";	
-
-	f -=g;
-	cout<< "f -= g\n";
-	cout<< "f(z) = "<<f.eval(z)._real<<"\n";
-	
-	f *=g;
-	cout<< "f *= g\n";
-	cout<< "f(z) = "<<f.eval(z)._real<<"\n";
-	cout<< "f(z)/2 = "<<(f.eval(z)/2)._real<<"\n";
-}
 
 void compute()
 {
-	modifyTest();
-	removeTest();
+	//modifyTest();
+	//removeTest();
 	valueTest();
-	arithmeticAssignmentTest();
 }
