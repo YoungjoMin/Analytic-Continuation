@@ -3,16 +3,20 @@
 namespace iRRAM{
 
 POWERSERIES::POWERSERIES() {
+	center = COMPLEX(0);
 	coef = ([] (int j) -> COMPLEX { return COMPLEX(0);});
 	k=1;
 }
 POWERSERIES::POWERSERIES(COEF coef, int k) : coef(coef), k(k) {}
 POWERSERIES::POWERSERIES(COMPLEX(*coef)(int), int k) : coef(coef), k(k) {}
+POWERSERIES::POWERSERIES(COMPLEX center, COEF coef, int k) : center(center), coef(coef), k(k) {}
+POWERSERIES::POWERSERIES(COMPLEX center, COMPLEX(*coef)(int), int k) : center(center), coef(coef), k(k) {}
 
 COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z, int d) {
 	COMPLEX result(0);
 	COMPLEX pow(1);
 	COMPLEX cur;
+	COMPLEX dz = z - center;
 	INTEGER diffTerm(1);
 	int t = k-p + 32*d;
 	
@@ -26,7 +30,7 @@ COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z, int d) {
 		diffTerm*=(i+d+1);
 		diffTerm/=(i+1);
 
-		pow =pow * z;
+		pow =pow * dz;
 	}
 	return result;
 }
@@ -119,8 +123,11 @@ POWERSERIES POWERSERIES::differentiate(int d) {
 }
 POWERSERIES POWERSERIES::continuation(const COMPLEX& z, int newK) {
 	COEF seq = ([=] (int j) -> COMPLEX {
-				return this->eval(z,j);
+				INTEGER factorial(1);
+				for(int i=2;i<=j;i++)
+					factorial*=i;
+				return this->eval(z,j)/factorial;
 			});
-	return POWERSERIES(seq,newK);
+	return POWERSERIES(z,seq,newK);
 }
 } //namespace iRRAM
