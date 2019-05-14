@@ -137,7 +137,7 @@ void ACTest()
 	POWERSERIES f(ExpSeq,1);
 
 	cout<<"continuation of f= exp(x) at x= 0.1 then calc value of f at 0.1+0.1i\n";
-	POWERSERIES f1 = f.continuation(COMPLEX(REAL(1)/REAL(10)),1);
+	POWERSERIES f1 = f.continuation(COMPLEX(REAL(1)/REAL(10)));
 	z = COMPLEX(REAL(1)/REAL(10), REAL(1)/REAL(10));
 	auto s1 = std::chrono::system_clock::now();
 	ret1 = f1.eval(z);

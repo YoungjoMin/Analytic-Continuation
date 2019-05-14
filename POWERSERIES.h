@@ -30,7 +30,7 @@ POWERSERIES& operator*=(const POWERSERIES& f);
 //	 for |z| <= 1/2k
 COMPLEX eval(const COMPLEX& z, int d=0);
 POWERSERIES differentiate(int d);//also for negative d constant term = 0
-POWERSERIES continuation(const COMPLEX& z, int k); //POWERSEREIS at point z
+POWERSERIES continuation(const COMPLEX& z); //POWERSEREIS at point z
 
 private:
 POWERSERIES differentiateHelper(int d);//for only differentiation (d>0)
