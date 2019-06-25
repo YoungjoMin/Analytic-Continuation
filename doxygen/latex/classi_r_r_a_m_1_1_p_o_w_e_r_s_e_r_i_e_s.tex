@@ -1,0 +1,539 @@
+\hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{}\section{i\+R\+R\+AM\+::P\+O\+W\+E\+R\+S\+E\+R\+I\+ES Class Reference}
+\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+
+
+complex function of power series $ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} $ with domain $ |z - z_0| \leq \frac{1}{2k}$  
+
+
+
+
+{\ttfamily \#include $<$P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} ()
+\begin{DoxyCompactList}\small\item\em default constructor. assigns zero \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a52d29f3978008ffb3c68aed51fd9cd16}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} (\mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{C\+O\+EF}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}, int \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}})
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4fbcfa7f2ed6c336a76e34a28a301a23}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} (C\+O\+M\+P\+L\+EX($\ast$\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}})(int), int \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}})
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_adc952285d2d3accfb7f2b729ef653e6a}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} (C\+O\+M\+P\+L\+EX \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}, \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{C\+O\+EF}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}, int \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}})
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf90a0fb9afe98b89286f8db29a3617f}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} (C\+O\+M\+P\+L\+EX \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}, C\+O\+M\+P\+L\+EX($\ast$\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}})(int), int \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}})
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \& \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a5cd774c22be6bbfefd8ed435cbd2a503}{operator+=}} (const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f)
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \& \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a8dc7a790d186b81261d7f0ce97d11b9c}{operator-\/=}} (const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f)
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \& \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7258b7ba6ec2ec53c1cf4b0861852ac4}{operator $\ast$=}} (const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f)
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}} (const C\+O\+M\+P\+L\+EX \&z, int d=0)
+\begin{DoxyCompactList}\small\item\em this calculates value of the d-\/th derivative of the \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} at z. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}{differentiate}} (int d)
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7af324b04aa41061f316de8eb48a7b36}{continuation}} (const C\+O\+M\+P\+L\+EX \&z)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf682244ff638e650eb0ba6509f8de9c}{differentiate\+Helper}} (int d)
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_abf4e4538df8e5e215e8530f494c1d429}{integral\+Helper}} (int d)
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a04a9cbaea8ae39ba9caa9be2e38c72ef}{eval\+Helper}} (int p, const C\+O\+M\+P\+L\+EX \&z, int d)
+\begin{DoxyCompactList}\small\item\em this calculates value of the d-\/th derivative of the \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} at z with precison $2^p$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}
+\item 
+\mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{C\+O\+EF}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}
+\item 
+int \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a3b6840781be086f4d790bc7fb56d15cd}{operator+}} (const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f1, const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f2)
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a86404e3d5b9a0aabad7a6c3846360f42}{operator -\/}} (const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f1, const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f2)
+\item 
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afc89ab0bc111fde98121793ebff11f5f}{operator $\ast$}} (const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f1, const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&f2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+complex function of power series $ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} $ with domain $ |z - z_0| \leq \frac{1}{2k}$ 
+
+\begin{DoxyRemark}{Remarks}
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} is a class of power series function defined on complex plane. \[ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} \] \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} has three member variable coef, centor, k.~\newline
+coef is a function which gets nonnegative integer n and returns n-\/th coefficient $a_n$~\newline
+C\+O\+M\+P\+L\+EX z0 is centor of the power series $z_0 $.~\newline
+k is positive integer about size of coefficient and the domain of the power series. it should be given when the \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} is initialized.~\newline
+with given k, coefficient $ a_j $ should satisfy \[ |a_j| \leq 2^k k^j \] then \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} is function defined on a circle. \[ |z-z_0| \leq \frac{1}{2k} \]
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+member variable function coef ((int) -\/$>$ C\+O\+M\+P\+L\+EX) should satisfy $ |a_j| \leq 2^k k^j $ 
+\end{DoxyWarning}
+
+
+Definition at line 33 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!POWERSERIES@{POWERSERIES}}
+\index{POWERSERIES@{POWERSERIES}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{POWERSERIES()}{POWERSERIES()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+ES (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default constructor. assigns zero 
+
+
+
+Definition at line 7 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7                          \{}
+\DoxyCodeLine{8     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}} = COMPLEX(0);}
+\DoxyCodeLine{9     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}} = ([] (\textcolor{keywordtype}{int} j) -> COMPLEX \{ \textcolor{keywordflow}{return} COMPLEX(0);\});}
+\DoxyCodeLine{10     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}=1;}
+\DoxyCodeLine{11 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a52d29f3978008ffb3c68aed51fd9cd16}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a52d29f3978008ffb3c68aed51fd9cd16}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!POWERSERIES@{POWERSERIES}}
+\index{POWERSERIES@{POWERSERIES}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{POWERSERIES()}{POWERSERIES()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+ES (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{C\+O\+EF}}}]{coef,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 : \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}(0), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}) \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4fbcfa7f2ed6c336a76e34a28a301a23}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4fbcfa7f2ed6c336a76e34a28a301a23}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!POWERSERIES@{POWERSERIES}}
+\index{POWERSERIES@{POWERSERIES}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{POWERSERIES()}{POWERSERIES()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+ES (\begin{DoxyParamCaption}\item[{C\+O\+M\+P\+L\+EX($\ast$)(int)}]{coef,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13 : \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}(0), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}) \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_adc952285d2d3accfb7f2b729ef653e6a}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_adc952285d2d3accfb7f2b729ef653e6a}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!POWERSERIES@{POWERSERIES}}
+\index{POWERSERIES@{POWERSERIES}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{POWERSERIES()}{POWERSERIES()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+ES (\begin{DoxyParamCaption}\item[{C\+O\+M\+P\+L\+EX}]{z0,  }\item[{\mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{C\+O\+EF}}}]{coef,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14 : \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}) \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf90a0fb9afe98b89286f8db29a3617f}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf90a0fb9afe98b89286f8db29a3617f}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!POWERSERIES@{POWERSERIES}}
+\index{POWERSERIES@{POWERSERIES}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{POWERSERIES()}{POWERSERIES()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+ES (\begin{DoxyParamCaption}\item[{C\+O\+M\+P\+L\+EX}]{z0,  }\item[{C\+O\+M\+P\+L\+EX($\ast$)(int)}]{coef,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15 : \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}), \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}) \{\}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7af324b04aa41061f316de8eb48a7b36}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7af324b04aa41061f316de8eb48a7b36}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!continuation@{continuation}}
+\index{continuation@{continuation}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{continuation()}{continuation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::continuation (\begin{DoxyParamCaption}\item[{const C\+O\+M\+P\+L\+EX \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Definition at line 187 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{187                                                       \{}
+\DoxyCodeLine{188     \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{COEF}} seq = ([=] (\textcolor{keywordtype}{int} j) -> COMPLEX \{}
+\DoxyCodeLine{189                 INTEGER factorial(1);}
+\DoxyCodeLine{190                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=2;i<=j;i++)}
+\DoxyCodeLine{191                     factorial*=i;}
+\DoxyCodeLine{192                 \textcolor{keywordflow}{return} this->\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z,j)/factorial;}
+\DoxyCodeLine{193             \});}
+\DoxyCodeLine{194     \textcolor{keywordflow}{return} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}}(z,seq,2*\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}});}
+\DoxyCodeLine{195 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!differentiate@{differentiate}}
+\index{differentiate@{differentiate}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{differentiate()}{differentiate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::differentiate (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})}
+
+
+
+Definition at line 179 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{179                                             \{}
+\DoxyCodeLine{180     \textcolor{keywordflow}{if}(d==0)}
+\DoxyCodeLine{181         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{182     \textcolor{keywordflow}{if}(d>0)}
+\DoxyCodeLine{183         \textcolor{keywordflow}{return} this->\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf682244ff638e650eb0ba6509f8de9c}{differentiateHelper}}(d);}
+\DoxyCodeLine{184     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{185         \textcolor{keywordflow}{return} this->\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_abf4e4538df8e5e215e8530f494c1d429}{integralHelper}}(-d);}
+\DoxyCodeLine{186 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf682244ff638e650eb0ba6509f8de9c}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_acf682244ff638e650eb0ba6509f8de9c}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!differentiateHelper@{differentiateHelper}}
+\index{differentiateHelper@{differentiateHelper}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{differentiateHelper()}{differentiateHelper()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::differentiate\+Helper (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 153 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{153                                                   \{}
+\DoxyCodeLine{154     \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{COEF}} seq = ([=] (\textcolor{keywordtype}{int} j) -> COMPLEX \{}
+\DoxyCodeLine{155             INTEGER diffTerm(1);}
+\DoxyCodeLine{156             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1;i<=d;i++)}
+\DoxyCodeLine{157                 diffTerm*=(i+j);}
+\DoxyCodeLine{158             \textcolor{keywordflow}{return} (\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(j+d))*diffTerm;}
+\DoxyCodeLine{159             \});}
+\DoxyCodeLine{160     \textcolor{keywordtype}{int} k1 = \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}} + round((log(REAL(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}})*REAL(d))/ln2())*d + REAL(0.5));}
+\DoxyCodeLine{161     \textcolor{keywordtype}{int} k2 =  round((exp(REAL(1))*\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}) + REAL(0.5));}
+\DoxyCodeLine{162     \textcolor{keywordtype}{int} newK = std::max(k1,k2);}
+\DoxyCodeLine{163     \textcolor{keywordflow}{return} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}, seq, newK);}
+\DoxyCodeLine{164 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!eval@{eval}}
+\index{eval@{eval}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::eval (\begin{DoxyParamCaption}\item[{const C\+O\+M\+P\+L\+EX \&}]{z,  }\item[{int}]{d = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+this calculates value of the d-\/th derivative of the \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} at z. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a04a9cbaea8ae39ba9caa9be2e38c72ef}{P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::eval\+Helper}} 
+\end{DoxySeeAlso}
+\begin{DoxyWarning}{Warning}
+given z should inside the domain $ |z - z_0| \leq \frac{1}{2k} $ 
+\end{DoxyWarning}
+
+
+Definition at line 78 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78                                                  \{}
+\DoxyCodeLine{79     \textcolor{keyword}{static} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}} * Tfp;}
+\DoxyCodeLine{80     \textcolor{keyword}{static} \textcolor{keywordtype}{int} Td;\textcolor{comment}{//using capture is not able for iRRAM::limit. so, use static copies}}
+\DoxyCodeLine{81     Tfp = \textcolor{keyword}{this};}
+\DoxyCodeLine{82     Td = d;}
+\DoxyCodeLine{83     COMPLEX (*lambda)(int, \textcolor{keyword}{const} COMPLEX\& z)  = ([] (\textcolor{keywordtype}{int} p, \textcolor{keyword}{const} COMPLEX\& z) \{}
+\DoxyCodeLine{84             \textcolor{keywordflow}{return} Tfp->evalHelper(p,z, Td);}
+\DoxyCodeLine{85     \}); \textcolor{comment}{// to use iRRAM::limit}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} limit(lambda,z);\textcolor{comment}{// calculates lim p->inf evalHelper(p,z,d);}}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a04a9cbaea8ae39ba9caa9be2e38c72ef}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a04a9cbaea8ae39ba9caa9be2e38c72ef}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!evalHelper@{evalHelper}}
+\index{evalHelper@{evalHelper}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{evalHelper()}{evalHelper()}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::eval\+Helper (\begin{DoxyParamCaption}\item[{int}]{p,  }\item[{const C\+O\+M\+P\+L\+EX \&}]{z,  }\item[{int}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+this calculates value of the d-\/th derivative of the \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} at z with precison $2^p$. 
+
+\begin{DoxyRemark}{Remarks}
+To approximate Infinite sum, this use partial sum. d-\/th derivative of the power series becomes $ f^{d} = \displaystyle\sum_{j=0}^{\infty}{(j+1)(j+2) \cdots (j+d) a_{j+d} (z - z_0)^j} $ ~\newline
+the I\+N\+T\+E\+G\+ER diff\+Term means the $ (j+1)(j+2) \cdots (j+d) $ terms.~\newline
+the first for loop calculates first $ (j+1)(j+2) \cdots (j+d) $ term.~\newline
+next loop calculates the partial sum. at each iteration it calculates i-\/th term ( $ (j+1)(j+2) \cdots (i+d) a_{i+d} (z - z_0)^j$ ) and add to the result. ~\newline
+~\newline
+~\newline
+To explain why this algorithm iterates for k-\/p+32d times.~\newline
+d-\/th derivative of the power series becomes $ f^{d} = \displaystyle\sum_{j=0}^{\infty}{(j+1)(j+2) \cdots (j+d) a_{j+d} (z - z_0)^j} $ ~\newline
+Let partial sum of the power series $ f^{d}_{t} = \displaystyle\sum_{j=0}^{t}{(j+1)(j+2) \cdots (j+d) a_{j+d} (z - z_0)^j} $~\newline
+since coefficients satisfy $ |a_j| \leq 2^k k^j $ and domain is $ |z - z_0| \leq \frac{1}{2k}$ ~\newline
+By using Induction on d \begin{align*} |f^{d} - f^{d}_{t} | &\leq \displaystyle\sum_{j=t+1}^{\infty} {|(j+1)(j+2) \cdots (j+d)| |a_{j+d}| |z-z_0|^j }\\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {(j+1)(j+2) \cdots (j+d) 2^k k^{j+d} \frac{1}{2^j k^j} }\\ &\leq 2^k k^d \displaystyle\sum_{j=t+1}^{\infty} {2^{-j} (j+1)(j+2) \cdots (j+d) }\\ &\leq 2^k k^d 2^{-t} (t+d+2)^d \\ &= 2^{k-t} k^d (t+d+2)^d \end{align*} So, To make difference less than $2^p$ ~\newline
+ $ |f^{d} - f^{d}_{t} | \leq 2^{k-t} k^d (t+d+2)^d \leq 2^p $ ~\newline
+So, $ 2^{k-t} k^d (t+d+2)^d \leq 2^p $ ~\newline
+By taking log, $ k-t + d\log_{2}{k} + d \log_{2}{(t+d+2)} \leq p $ ~\newline
+Then $ k - p + d\log_{2}{k(t+d+2)} \leq t $ ~\newline
+Supposing using int which is bounded by $ 2^{32} $ ~\newline
+By putting $2^{32}$ inside log, $ k - p + 32d \leq t$ ~\newline
+Therefore with $ t \geq k - p + 32d $, $ |f^{d} - f^{d}_{t} | \leq 2^p $ ~\newline
+With iterating more than k -\/ p + 32d makes error less than $2^p$.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+given z should inside the domain $ |z - z_0| \leq \frac{1}{2k} $ ~\newline
+ 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Instead of supposing that we are using int, use the inequality to get better iteration bound \end{DoxyRefDesc}
+
+
+Definition at line 50 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50                                                               \{}
+\DoxyCodeLine{51     COMPLEX result(0);}
+\DoxyCodeLine{52     COMPLEX pow(1);}
+\DoxyCodeLine{53     COMPLEX cur;}
+\DoxyCodeLine{54     COMPLEX dz = z - \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}};}
+\DoxyCodeLine{55     INTEGER diffTerm(1);}
+\DoxyCodeLine{56     \textcolor{keywordtype}{int} t = \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}}-p + 32*d;}
+\DoxyCodeLine{57     }
+\DoxyCodeLine{58     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 2;i<=d;i++)}
+\DoxyCodeLine{59         diffTerm*=i;\textcolor{comment}{// to calculate (j+1)(j+2)...(j+d)}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i<=t;i++) \{}
+\DoxyCodeLine{62         cur = (\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(i+d)*pow)*diffTerm;\textcolor{comment}{// add i-th term of the d-th derivative of the }}
+\DoxyCodeLine{63         result = result + cur;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         diffTerm*=(i+d+1);}
+\DoxyCodeLine{66         diffTerm/=(i+1);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68         pow =pow * dz;}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{71 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_abf4e4538df8e5e215e8530f494c1d429}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_abf4e4538df8e5e215e8530f494c1d429}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!integralHelper@{integralHelper}}
+\index{integralHelper@{integralHelper}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{integralHelper()}{integralHelper()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::integral\+Helper (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 166 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{166                                              \{}
+\DoxyCodeLine{167     \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{COEF}} seq = ([=] (\textcolor{keywordtype}{int} j) -> COMPLEX \{}
+\DoxyCodeLine{168             \textcolor{keywordflow}{if}(j<d)}
+\DoxyCodeLine{169                 \textcolor{keywordflow}{return} COMPLEX(0);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171             INTEGER intTerm(1);}
+\DoxyCodeLine{172             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0;i<d;i++)}
+\DoxyCodeLine{173                     intTerm*=(j-i);}
+\DoxyCodeLine{174             \textcolor{keywordflow}{return} (\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}{coef}}(j-d))/intTerm;}
+\DoxyCodeLine{175             \});}
+\DoxyCodeLine{176     \textcolor{keywordflow}{return} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}}(\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}{z0}}, seq,\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}{k}});}
+\DoxyCodeLine{177 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7258b7ba6ec2ec53c1cf4b0861852ac4}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7258b7ba6ec2ec53c1cf4b0861852ac4}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!operator $\ast$=@{operator $\ast$=}}
+\index{operator $\ast$=@{operator $\ast$=}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{operator $\ast$=()}{operator *=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \& i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::operator $\ast$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Definition at line 147 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{147                                                           \{}
+\DoxyCodeLine{148     *\textcolor{keyword}{this} = (*this)*f;}
+\DoxyCodeLine{149     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{150 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a5cd774c22be6bbfefd8ed435cbd2a503}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a5cd774c22be6bbfefd8ed435cbd2a503}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \& i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{139                                                           \{}
+\DoxyCodeLine{140     *\textcolor{keyword}{this} = (*this)+f;}
+\DoxyCodeLine{141     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a8dc7a790d186b81261d7f0ce97d11b9c}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a8dc7a790d186b81261d7f0ce97d11b9c}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}}\& i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afc89ab0bc111fde98121793ebff11f5f}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afc89ab0bc111fde98121793ebff11f5f}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!operator $\ast$@{operator $\ast$}}
+\index{operator $\ast$@{operator $\ast$}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{operator $\ast$}{operator *}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} operator $\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f1,  }\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\begin{DoxyWarning}{Warning}
+given two \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} should have same z0. 
+\end{DoxyWarning}
+
+
+Definition at line 129 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{129                                                                      \{}
+\DoxyCodeLine{130     \textcolor{comment}{//suppose f1 and f2 has same z0}}
+\DoxyCodeLine{131 \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{COEF}} lambda = ([=] (\textcolor{keywordtype}{int} j) -> COMPLEX \{}
+\DoxyCodeLine{132                     COMPLEX result(0);}
+\DoxyCodeLine{133                     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0;i<=j;i++)}
+\DoxyCodeLine{134                         result= result + (f1.coef(i)*f2.coef(j-i));}
+\DoxyCodeLine{135                     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{136         \}   );}
+\DoxyCodeLine{137     \textcolor{keywordflow}{return} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}}(f1.z0, lambda, f1.k+f2.k);}
+\DoxyCodeLine{138 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a86404e3d5b9a0aabad7a6c3846360f42}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a86404e3d5b9a0aabad7a6c3846360f42}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!operator -\/@{operator -\/}}
+\index{operator -\/@{operator -\/}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{operator -\/}{operator -}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} operator -\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f1,  }\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a3b6840781be086f4d790bc7fb56d15cd}{P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::operator +}}
+\end{DoxySeeAlso}
+by the same reason of the operator +~\newline
+this resulting \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} has $ max(k_1, k_2)+1 $ for k value.~\newline
+\begin{DoxyWarning}{Warning}
+given two \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} should have same z0. 
+\end{DoxyWarning}
+
+
+Definition at line 119 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{119                                                                      \{}
+\DoxyCodeLine{120     \textcolor{comment}{//suppose f1 and f2 has same z0}}
+\DoxyCodeLine{121     \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{COEF}} lambda = ([=] (\textcolor{keywordtype}{int} j) -> COMPLEX \{}
+\DoxyCodeLine{122             \textcolor{keywordflow}{return} f1.coef(j)-f2.coef(j);}
+\DoxyCodeLine{123             \});}
+\DoxyCodeLine{124     \textcolor{keywordflow}{return} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}}(f1.z0, lambda, std::max(f1.k,f2.k)+1);}
+\DoxyCodeLine{125 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a3b6840781be086f4d790bc7fb56d15cd}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a3b6840781be086f4d790bc7fb56d15cd}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!operator+@{operator+}}
+\index{operator+@{operator+}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{operator+}{operator+}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f1,  }\item[{const \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} \&}]{f2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+let f1 is the power series with coefficient $ a_j $ and $ k_1 $ ~\newline
+and f2 is the power series with coefficient $ b_j $ and $ k_2 $ ~\newline
+then resulting power series has coefficient $ c_j = a_j + b_j $ ~\newline
+ \begin{align*} |c_j| &\leq |a_j| + |b_j|\\ &\leq 2^{k_1} {k_1}^j + 2^{k_2} {k_2}^j \\ &\leq 2^{\max(k_1,k_2)} {\max(k_1,k_2)}^j + 2^{\max(k_1,k_2)} {\max(k_1,k_2)}^j \\ &\leq 2^{\max(k_1,k_2) +1} {\max(k_1,k_2)}^j \\ &\leq 2^{\max(k_1,k_2)+1} (\max(k_1,k_2)+1)^j \end{align*} therefore resulting \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} has $ max(k_1, k_2)+1 $ for k value.~\newline
+\begin{DoxyWarning}{Warning}
+given two \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{P\+O\+W\+E\+R\+S\+E\+R\+I\+ES}} should have same z0. 
+\end{DoxyWarning}
+
+
+Definition at line 104 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104                                                                      \{}
+\DoxyCodeLine{105     \textcolor{comment}{//suppose f1 and f2 has same z0}}
+\DoxyCodeLine{106     \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{COEF}} lambda = ([=] (\textcolor{keywordtype}{int} j) -> COMPLEX \{}
+\DoxyCodeLine{107             \textcolor{keywordflow}{return} f1.coef(j)+f2.coef(j);}
+\DoxyCodeLine{108             \}); \textcolor{comment}{//result coefficient sequence}}
+\DoxyCodeLine{109     \textcolor{keywordflow}{return} \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aa5e77b80466e6bb11f7e02371900e59b}{POWERSERIES}}(f1.z0, lambda, std::max(f1.k,f2.k)+1);}
+\DoxyCodeLine{110 \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a4a9d45aaad4a616c78c2cb9cf83942bc}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!coef@{coef}}
+\index{coef@{coef}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{coef}{coef}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacei_r_r_a_m_a7fb438d61c85aface41ae108812df36f}{C\+O\+EF}} i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::coef\hspace{0.3cm}{\ttfamily [private]}}
+
+coefficient function (int) -\/$>$ C\+O\+M\+P\+L\+EX~\newline
+with input nonnegative integer n and returns n-\/th coefficient $a_n$ of the powerseries 
+
+Definition at line 66 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h.
+
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_aefb307111078169532e8a0b16507469a}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!k@{k}}
+\index{k@{k}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily int i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::k\hspace{0.3cm}{\ttfamily [private]}}
+
+variable about size of coefficient and the domain of the powerseries 
+
+Definition at line 70 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h.
+
+\mbox{\Hypertarget{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}\label{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a9ce9c509d0376f35f6c6b5d876d6683f}} 
+\index{iRRAM::POWERSERIES@{iRRAM::POWERSERIES}!z0@{z0}}
+\index{z0@{z0}!iRRAM::POWERSERIES@{iRRAM::POWERSERIES}}
+\subsubsection{\texorpdfstring{z0}{z0}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX i\+R\+R\+A\+M\+::\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S\+::z0\hspace{0.3cm}{\ttfamily [private]}}
+
+centor $ z_0 $of the power series $ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} $ 
+
+Definition at line 61 of file P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/nanim/\+Desktop/\+A\+N\+A\+L\+Y\+T\+I\+C-\/\+C\+O\+N\+T\+I\+N\+U\+A\+T\+I\+O\+N/\mbox{\hyperlink{_p_o_w_e_r_s_e_r_i_e_s_8h}{P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h}}\item 
+C\+:/\+Users/nanim/\+Desktop/\+A\+N\+A\+L\+Y\+T\+I\+C-\/\+C\+O\+N\+T\+I\+N\+U\+A\+T\+I\+O\+N/\mbox{\hyperlink{_p_o_w_e_r_s_e_r_i_e_s_8cc}{P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+cc}}\end{DoxyCompactItemize}

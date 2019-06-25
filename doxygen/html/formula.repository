@@ -1,0 +1,48 @@
+\form#0:$2^p$
+\form#1:$ f_t $
+\form#2:$ |a_j| \leq 2^k k^j $
+\form#3:$ |z - z_0| \leq \frac{1}{2k} $
+\form#4:$ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} $
+\form#5:$|a_j| \leq 2^k k^j$
+\form#6:\[ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} \]
+\form#7:$a_n$
+\form#8:$ a_j $
+\form#9:\[ |a_j| \leq 2^k k^j \]
+\form#10:\[ |z-z_0| \leq \frac{1}{2k} \]
+\form#11:$ |z - z_0| \leq \frac{1}{2k}$
+\form#12:$z_0 $
+\form#13:$ \displaystyle\sum_{j=0}^{\infty}{(j+1)(j+2) \cdots (j+d) a_j (z - z_0)^j} $
+\form#14:$ f_t = \sum_{j=0}^{\infty}{a_j (z - z_0)^j}$
+\form#15:$ f^(d) = \displaystyle\sum_{j=0}^{\infty}{(j+1)(j+2) \cdots (j+d) a_j (z - z_0)^j} $
+\form#16:$ f^{d}_{t} = \displaystyle\sum_{j=0}^{t}{(j+1)(j+2) \cdots (j+d) a_j (z - z_0)^j} $
+\form#17:\begin{align*}[ |f^{d} - f^{d}_{t} | &\leq | \displaystyle\sum_{j=t+1}^{\infty}{(j+1)(j+2) \cdots (j+d) a_j (z - z_0)^j}| \\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {|(j+1)(j+2) \cdots (j+d)| |a_j| |z-z_0|^j }\\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {(j+1)(j+2) \cdots (j+d) 2^k k^{j+d} \frac{1}{2^j k^j} }\\ &\leq 2^k k^d \displaystyle\sum_{j=t+1}^{\infty} {2^{-j} (j+1)(j+2) \cdots (j+d) }\\ &\leq 2^k k^d 2^{-t} (t+d+2)^d \\ &= 2^{k-t} k^d (t+d+2)^d \]
+\form#18:\begin{align*} |f^{d} - f^{d}_{t} | &\leq | \displaystyle\sum_{j=t+1}^{\infty}{(j+1)(j+2) \cdots (j+d) a_j (z - z_0)^j}| \\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {|(j+1)(j+2) \cdots (j+d)| |a_j| |z-z_0|^j }\\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {(j+1)(j+2) \cdots (j+d) 2^k k^{j+d} \frac{1}{2^j k^j} }\\ &\leq 2^k k^d \displaystyle\sum_{j=t+1}^{\infty} {2^{-j} (j+1)(j+2) \cdots (j+d) }\\ &\leq 2^k k^d 2^{-t} (t+d+2)^d \\ &= 2^{k-t} k^d (t+d+2)^d \end{align*}
+\form#19:$ f^{d} = \displaystyle\sum_{j=0}^{\infty}{(j+1)(j+2) \cdots (j+d) a_j (z - z_0)^j} $
+\form#20:$ |f^{d} - f^{d}_{t} | \leq 2^{k-t} k^d (t+d+2)^d \leq 2^p $
+\form#21:$ 2^{k-t} k^d (t+d+2)^d \leq 2^p $
+\form#22:$ k-t + d\log_{2}{k} + d \log_{2}{(t+d+2)} \leq p $
+\form#23:$ 2^32 $
+\form#24:$ k - p + 64d \leq t$
+\form#25:$ k - p + d\log_{2}{k(t+d+2)} \leq t $
+\form#26:$ 2^{32} $
+\form#27:$ k - p + 32d \leq t$
+\form#28:$ f^{d} = \displaystyle\sum_{j=0}^{\infty}{(j+1)(j+2) \cdots (j+d) a_{j+d} (z - z_0)^j} $
+\form#29:$ f^{d}_{t} = \displaystyle\sum_{j=0}^{t}{(j+1)(j+2) \cdots (j+d) a_{j+d} (z - z_0)^j} $
+\form#30:\begin{align*} |f^{d} - f^{d}_{t} | &\leq | \displaystyle\sum_{j=t+1}^{\infty}{(j+1)(j+2) \cdots (j+d) a_{j+d} (z - z_0)^j}| \\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {|(j+1)(j+2) \cdots (j+d)| |a_{j+d}| |z-z_0|^j }\\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {(j+1)(j+2) \cdots (j+d) 2^k k^{j+d} \frac{1}{2^j k^j} }\\ &\leq 2^k k^d \displaystyle\sum_{j=t+1}^{\infty} {2^{-j} (j+1)(j+2) \cdots (j+d) }\\ &\leq 2^k k^d 2^{-t} (t+d+2)^d \\ &= 2^{k-t} k^d (t+d+2)^d \end{align*}
+\form#31:\begin{align*} |f^{d} - f^{d}_{t} | &\leq \displaystyle\sum_{j=t+1}^{\infty} {|(j+1)(j+2) \cdots (j+d)| |a_{j+d}| |z-z_0|^j }\\ &\leq \displaystyle\sum_{j=t+1}^{\infty} {(j+1)(j+2) \cdots (j+d) 2^k k^{j+d} \frac{1}{2^j k^j} }\\ &\leq 2^k k^d \displaystyle\sum_{j=t+1}^{\infty} {2^{-j} (j+1)(j+2) \cdots (j+d) }\\ &\leq 2^k k^d 2^{-t} (t+d+2)^d \\ &= 2^{k-t} k^d (t+d+2)^d \end{align*}
+\form#32:$2^{32}$
+\form#33:$ t \geq k - p + 32d $
+\form#34:$ |f^{d} - f^{d}_{t} | \leq 2^p $
+\form#35:$ (j+1)(j+2) \cdots (j+d) $
+\form#36:$ (j+1)(j+2) \cdots (i+d) a_{i+d} (z - z_0)^j$
+\form#37:$ k_1 $
+\form#38:$ b_j $
+\form#39:$ k_2 $
+\form#40:$ c_j = a_j + b_j $
+\form#41:$ |c_j| \leq |a_j| + |b_j| \leq 2^{k_1} {k_1}^j + 2^{k_2} {k_2}^j \leq 2^{\max(k_1,k_2)+1} (\max(k_1,k_2)+1) $
+\form#42:$ max(k_1, k_2) $
+\form#43:$ |c_j| \leq |a_j| + |b_j| \leq 2^{k_1} {k_1}^j + 2^{k_2} {k_2}^j \leq 2^{\max(k_1,k_2)} \max(k_1,k_2) + 2^{\max(k_1,k_2)} \max(k_1,k_2) \leq 2^{\max(k_1,k_2) +1} \max(k_1,k_2) \leq 2^{\max(k_1,k_2)+1} (\max(k_1,k_2)+1) $
+\form#44:\begin{align*} |c_j| &\leq |a_j| + |b_j|\\ &\leq 2^{k_1} {k_1}^j + 2^{k_2} {k_2}^j \\ &\leq 2^{\max(k_1,k_2)} \max(k_1,k_2) + 2^{\max(k_1,k_2)} \max(k_1,k_2) \\ &\leq 2^{\max(k_1,k_2) +1} \max(k_1,k_2) \\ &\leq 2^{\max(k_1,k_2)+1} (\max(k_1,k_2)+1) \end{align*}
+\form#45:\begin{align*} |c_j| &\leq |a_j| + |b_j|\\ &\leq 2^{k_1} {k_1}^j + 2^{k_2} {k_2}^j \\ &\leq 2^{\max(k_1,k_2)} {\max(k_1,k_2)}^j + 2^{\max(k_1,k_2)} {\max(k_1,k_2)}^j \\ &\leq 2^{\max(k_1,k_2) +1} {\max(k_1,k_2)}^j \\ &\leq 2^{\max(k_1,k_2)+1} (\max(k_1,k_2)+1)^j \end{align*}
+\form#46:$ max(k_1, k_2)+1 $
+\form#47:$ z_0 $

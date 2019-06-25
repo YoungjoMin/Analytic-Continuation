@@ -1,0 +1,303 @@
+\hypertarget{_compute_8cc}{}\section{Compute.\+cc File Reference}
+\label{_compute_8cc}\index{Compute.cc@{Compute.cc}}
+{\ttfamily \#include \char`\"{}i\+R\+R\+A\+M.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./\+P\+O\+W\+E\+R\+S\+E\+R\+I\+E\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{_compute_8cc_adbf6254e4ad3f81f802446c29d6a7288}{fibo\+Seq}} (int k)
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{_compute_8cc_af59a9aef66c8715c9dca60482531eb1e}{Identity\+Seq}} (int k)
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{_compute_8cc_a40b8bb2c959523d62eb1cf84f3e9252a}{Inv\+X\+Seq}} (int k)
+\item 
+C\+O\+M\+P\+L\+EX \mbox{\hyperlink{_compute_8cc_a418984bd9756d29e7c528e705ae04c4f}{Exp\+Seq}} (int k)
+\item 
+void \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{my\+Print}} (C\+O\+M\+P\+L\+EX z)
+\item 
+void \mbox{\hyperlink{_compute_8cc_aff2bb15ae32440f33d5215beb0778592}{Int\+Test}} ()
+\item 
+void \mbox{\hyperlink{_compute_8cc_af9fbbf4d5fbf4f250f54493e93c10e7a}{Diff\+Test}} ()
+\item 
+void \mbox{\hyperlink{_compute_8cc_a64324c1675a8589d5e92bab718d3b6f9}{A\+C\+Test}} ()
+\item 
+void \mbox{\hyperlink{_compute_8cc_a4993c97a669fa259c6574a18d547c117}{compute}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_compute_8cc_a64324c1675a8589d5e92bab718d3b6f9}\label{_compute_8cc_a64324c1675a8589d5e92bab718d3b6f9}} 
+\index{Compute.cc@{Compute.cc}!ACTest@{ACTest}}
+\index{ACTest@{ACTest}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{ACTest()}{ACTest()}}
+{\footnotesize\ttfamily void A\+C\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 133 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{134 \{}
+\DoxyCodeLine{135     }
+\DoxyCodeLine{136     COMPLEX ret1, ret, z;}
+\DoxyCodeLine{137     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} f(\mbox{\hyperlink{_compute_8cc_a418984bd9756d29e7c528e705ae04c4f}{ExpSeq}},1);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     cout<<\textcolor{stringliteral}{"continuation of f= exp(x) at x= 0.1 then calc value of f at 0.1+0.1i\(\backslash\)n"};}
+\DoxyCodeLine{140     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} f1 = f.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a7af324b04aa41061f316de8eb48a7b36}{continuation}}(COMPLEX(REAL(1)/REAL(10)));}
+\DoxyCodeLine{141     z = COMPLEX(REAL(1)/REAL(10), REAL(1)/REAL(10));}
+\DoxyCodeLine{142     \textcolor{keyword}{auto} s1 = std::chrono::system\_clock::now();}
+\DoxyCodeLine{143     ret1 = f1.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{144     \textcolor{keyword}{auto} e1 = std::chrono::system\_clock::now();}
+\DoxyCodeLine{145     \textcolor{keyword}{auto} s2 = std::chrono::system\_clock::now();}
+\DoxyCodeLine{146     ret  = f.eval(z);}
+\DoxyCodeLine{147     \textcolor{keyword}{auto} e2 = std::chrono::system\_clock::now();}
+\DoxyCodeLine{148     cout<<\textcolor{stringliteral}{"values\(\backslash\)n"};}
+\DoxyCodeLine{149     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{150     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret);}
+\DoxyCodeLine{151     std::cout<<\textcolor{stringliteral}{"continuation"}<<(e1-s1).count()<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{152     std::cout<<\textcolor{stringliteral}{"evaluation"}<<(e2-s2).count()<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_a4993c97a669fa259c6574a18d547c117}\label{_compute_8cc_a4993c97a669fa259c6574a18d547c117}} 
+\index{Compute.cc@{Compute.cc}!compute@{compute}}
+\index{compute@{compute}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{compute()}{compute()}}
+{\footnotesize\ttfamily void compute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 158 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{159 \{}
+\DoxyCodeLine{160     \textcolor{comment}{//IntTest();}}
+\DoxyCodeLine{161     \textcolor{comment}{//DiffTest();}}
+\DoxyCodeLine{162     \mbox{\hyperlink{_compute_8cc_a64324c1675a8589d5e92bab718d3b6f9}{ACTest}}();}
+\DoxyCodeLine{163     }
+\DoxyCodeLine{164 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_af9fbbf4d5fbf4f250f54493e93c10e7a}\label{_compute_8cc_af9fbbf4d5fbf4f250f54493e93c10e7a}} 
+\index{Compute.cc@{Compute.cc}!DiffTest@{DiffTest}}
+\index{DiffTest@{DiffTest}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{DiffTest()}{DiffTest()}}
+{\footnotesize\ttfamily void Diff\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 92 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94     COMPLEX ret1, ret2, z;}
+\DoxyCodeLine{95     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} f(\mbox{\hyperlink{_compute_8cc_a40b8bb2c959523d62eb1cf84f3e9252a}{InvXSeq}},1);}
+\DoxyCodeLine{96     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} g(\mbox{\hyperlink{_compute_8cc_af59a9aef66c8715c9dca60482531eb1e}{IdentitySeq}},1);}
+\DoxyCodeLine{97     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} h(\mbox{\hyperlink{_compute_8cc_a418984bd9756d29e7c528e705ae04c4f}{ExpSeq}},1);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} k = f.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}{differentiate}}(3);}
+\DoxyCodeLine{101     cout<<\textcolor{stringliteral}{"3 times differentiate 1/1-x = 3! / (1-x)\string^4\(\backslash\)n"};}
+\DoxyCodeLine{102     cout<<\textcolor{stringliteral}{"3 diff 1/1-x at x = 1/2\(\backslash\)n"};}
+\DoxyCodeLine{103     z = COMPLEX(REAL(1)/REAL(2));}
+\DoxyCodeLine{104     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{105     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{106     cout<<\textcolor{stringliteral}{" 3! / (1-x)\string^4 at x = 1/2"}<<\textcolor{stringliteral}{"\(\backslash\)n"};}
+\DoxyCodeLine{107     ret2 = COMPLEX(6) / ((1-z)*(1-z)*(1-z)*(1-z));}
+\DoxyCodeLine{108     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     cout<<\textcolor{stringliteral}{"\(\backslash\)n 3 diff 1/1-x at x = 1/2i\(\backslash\)n"};}
+\DoxyCodeLine{111     z = COMPLEX(REAL(0), REAL(1)/REAL(2));}
+\DoxyCodeLine{112     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{113     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{114     cout<<\textcolor{stringliteral}{" 3! / (1-x)\string^4 at x = 1/2"}<<\textcolor{stringliteral}{"\(\backslash\)n"};}
+\DoxyCodeLine{115     ret2 = COMPLEX(6) / ((1-z)*(1-z)*(1-z)*(1-z));}
+\DoxyCodeLine{116     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{117     cout<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     k = h.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}{differentiate}}(10);}
+\DoxyCodeLine{121     cout<<\textcolor{stringliteral}{" 10 times differentiate e\string^x = e\string^x\(\backslash\)n"};}
+\DoxyCodeLine{122     cout<< \textcolor{stringliteral}{"10 diff x at x = 0.1 + 0.1i\(\backslash\)n"};}
+\DoxyCodeLine{123     z = COMPLEX(REAL(1)/REAL(10), REAL(1)/REAL(10));}
+\DoxyCodeLine{124     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{125     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{126     cout<<\textcolor{stringliteral}{"using e\string^x\(\backslash\)n"};}
+\DoxyCodeLine{127     ret2 = h.eval(z);}
+\DoxyCodeLine{128     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{129     cout<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};}
+\DoxyCodeLine{130     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{131 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_a418984bd9756d29e7c528e705ae04c4f}\label{_compute_8cc_a418984bd9756d29e7c528e705ae04c4f}} 
+\index{Compute.cc@{Compute.cc}!ExpSeq@{ExpSeq}}
+\index{ExpSeq@{ExpSeq}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{ExpSeq()}{ExpSeq()}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX Exp\+Seq (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27                       \{}
+\DoxyCodeLine{28     INTEGER a(1);}
+\DoxyCodeLine{29     \textcolor{keywordflow}{if}(k<=1)}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} COMPLEX(1);}
+\DoxyCodeLine{31     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=2;i<=k;i++)}
+\DoxyCodeLine{32         a*=i;}
+\DoxyCodeLine{33     \textcolor{keywordflow}{return} COMPLEX(REAL(1)/REAL(a));}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_adbf6254e4ad3f81f802446c29d6a7288}\label{_compute_8cc_adbf6254e4ad3f81f802446c29d6a7288}} 
+\index{Compute.cc@{Compute.cc}!fiboSeq@{fiboSeq}}
+\index{fiboSeq@{fiboSeq}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{fiboSeq()}{fiboSeq()}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX fibo\+Seq (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 7 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7                        \{}
+\DoxyCodeLine{8     \textcolor{keywordflow}{if}(k<=1)}
+\DoxyCodeLine{9         \textcolor{keywordflow}{return} COMPLEX(1);}
+\DoxyCodeLine{10     INTEGER a, b(1), c(1);}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{12     \textcolor{keywordflow}{for}(i=2;i<=k;i++) \{}
+\DoxyCodeLine{13         a = b;}
+\DoxyCodeLine{14         b = c;}
+\DoxyCodeLine{15         c = a+b;}
+\DoxyCodeLine{16     \}}
+\DoxyCodeLine{17     \textcolor{keywordflow}{return} COMPLEX(c);}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_af59a9aef66c8715c9dca60482531eb1e}\label{_compute_8cc_af59a9aef66c8715c9dca60482531eb1e}} 
+\index{Compute.cc@{Compute.cc}!IdentitySeq@{IdentitySeq}}
+\index{IdentitySeq@{IdentitySeq}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{IdentitySeq()}{IdentitySeq()}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX Identity\+Seq (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20                            \{}
+\DoxyCodeLine{21     \textcolor{keywordflow}{return} (k==1 ? COMPLEX(1) : COMPLEX(0));}
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_aff2bb15ae32440f33d5215beb0778592}\label{_compute_8cc_aff2bb15ae32440f33d5215beb0778592}} 
+\index{Compute.cc@{Compute.cc}!IntTest@{IntTest}}
+\index{IntTest@{IntTest}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{IntTest()}{IntTest()}}
+{\footnotesize\ttfamily void Int\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 39 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     COMPLEX ret1, ret2, z;}
+\DoxyCodeLine{42     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} f(\mbox{\hyperlink{_compute_8cc_a40b8bb2c959523d62eb1cf84f3e9252a}{InvXSeq}},1);}
+\DoxyCodeLine{43     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} g(\mbox{\hyperlink{_compute_8cc_af59a9aef66c8715c9dca60482531eb1e}{IdentitySeq}},1);}
+\DoxyCodeLine{44     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} h(\mbox{\hyperlink{_compute_8cc_a418984bd9756d29e7c528e705ae04c4f}{ExpSeq}},1);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s}{POWERSERIES}} k = f.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}{differentiate}}(-1);}
+\DoxyCodeLine{48     cout<<\textcolor{stringliteral}{"integral 1/1-x = -log(1-x)\(\backslash\)n"};}
+\DoxyCodeLine{49     cout<<\textcolor{stringliteral}{" integral 1/1-x at x = 1/2\(\backslash\)n"};}
+\DoxyCodeLine{50     z = COMPLEX(REAL(1)/REAL(2));}
+\DoxyCodeLine{51     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{52     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{53     cout<<\textcolor{stringliteral}{" -log(1-x) at x = 1/2"}<<\textcolor{stringliteral}{"\(\backslash\)n"};}
+\DoxyCodeLine{54     ret2 = -log(REAL(1)-z);}
+\DoxyCodeLine{55     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     cout<<\textcolor{stringliteral}{"\(\backslash\)n integral 1/1-x at x = 1/2i\(\backslash\)n"};}
+\DoxyCodeLine{58     z = COMPLEX(REAL(0), REAL(1)/REAL(2));}
+\DoxyCodeLine{59     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{60     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{61     cout<<\textcolor{stringliteral}{" -log(1-x) at x = 1/2i"}<<\textcolor{stringliteral}{"\(\backslash\)n"};}
+\DoxyCodeLine{62     ret2 = -log(COMPLEX(1) - z);}
+\DoxyCodeLine{63     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{64     cout<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     k = g.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}{differentiate}}(-3);}
+\DoxyCodeLine{68     cout<< \textcolor{stringliteral}{"3 times integral x  = 1/24 x\string^4\(\backslash\)n"};}
+\DoxyCodeLine{69     cout<< \textcolor{stringliteral}{"integral x at x = 0.1\(\backslash\)n"};}
+\DoxyCodeLine{70     z = COMPLEX(REAL(1)/REAL(10));}
+\DoxyCodeLine{71     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{72     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{73     cout<< \textcolor{stringliteral}{"using 1/24 x\string^4 at x = 0.1\(\backslash\)n"};}
+\DoxyCodeLine{74     ret2 = (z*z*z*z)/REAL(24);}
+\DoxyCodeLine{75     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{76     cout<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     k = h.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_a91f30d704946e517a2cdc9680c5c9ed2}{differentiate}}(-2);}
+\DoxyCodeLine{80     cout<<\textcolor{stringliteral}{" 2 times integral e\string^x = e\string^x - 1 -x\(\backslash\)n"};}
+\DoxyCodeLine{81     cout<< \textcolor{stringliteral}{"integral x at x = 0.1 + 0.1i\(\backslash\)n"};}
+\DoxyCodeLine{82     z = COMPLEX(REAL(1)/REAL(10), REAL(1)/REAL(10));}
+\DoxyCodeLine{83     ret1 = k.\mbox{\hyperlink{classi_r_r_a_m_1_1_p_o_w_e_r_s_e_r_i_e_s_afa6ce6efb483f1bca0b11f0a74a40a29}{eval}}(z);}
+\DoxyCodeLine{84     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret1);}
+\DoxyCodeLine{85     cout<<\textcolor{stringliteral}{"using e\string^x -1 - x\(\backslash\)n"};}
+\DoxyCodeLine{86     ret2 = h.eval(z) - COMPLEX(1) - z;}
+\DoxyCodeLine{87     \mbox{\hyperlink{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}{myPrint}}(ret2);}
+\DoxyCodeLine{88     cout<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};}
+\DoxyCodeLine{89     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{90 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_a40b8bb2c959523d62eb1cf84f3e9252a}\label{_compute_8cc_a40b8bb2c959523d62eb1cf84f3e9252a}} 
+\index{Compute.cc@{Compute.cc}!InvXSeq@{InvXSeq}}
+\index{InvXSeq@{InvXSeq}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{InvXSeq()}{InvXSeq()}}
+{\footnotesize\ttfamily C\+O\+M\+P\+L\+EX Inv\+X\+Seq (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23                        \{}
+\DoxyCodeLine{24     \textcolor{keywordflow}{return} COMPLEX(1);}
+\DoxyCodeLine{25 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}\label{_compute_8cc_ab1aa90234c4a89ca34824e438ddfb93b}} 
+\index{Compute.cc@{Compute.cc}!myPrint@{myPrint}}
+\index{myPrint@{myPrint}!Compute.cc@{Compute.cc}}
+\subsubsection{\texorpdfstring{myPrint()}{myPrint()}}
+{\footnotesize\ttfamily void my\+Print (\begin{DoxyParamCaption}\item[{C\+O\+M\+P\+L\+EX}]{z }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Compute.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35                         \{}
+\DoxyCodeLine{36     cout<<z.\_real<<\textcolor{stringliteral}{" + "}<<z.\_imag<<\textcolor{stringliteral}{" i\(\backslash\)n"};}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}
