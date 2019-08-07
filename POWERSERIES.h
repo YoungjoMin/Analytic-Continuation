@@ -49,12 +49,13 @@ POWERSERIES& operator*=(const POWERSERIES& f);
 
 COMPLEX eval(const COMPLEX& z, int d=0);//only for nonnegative d.
 POWERSERIES differentiate(int d);//also for negative d. and return function has integral constant all 0.
-POWERSERIES continuation(const COMPLEX& z); //POWERSEREIS at point z
-
+POWERSERIES continuation(const COMPLEX& z, int newK); //POWERSEREIS at point z
+COMPLEX evalHelper(int p, const COMPLEX& z, int d);
 private:
+
+int findIterationCount(int p, int d);
 POWERSERIES differentiateHelper(int d);//for only differentiation (d>0)
 POWERSERIES integralHelper(int d);// for only integral (d>0)
-COMPLEX evalHelper(int p, const COMPLEX& z, int d);
 /**
  * centor \f$ z_0 \f$ of the power series \f$ \displaystyle\sum_{j=0}^{\infty}{a_j (z - z_0)^j} \f$
  */

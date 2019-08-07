@@ -14,6 +14,20 @@ POWERSERIES::POWERSERIES(COMPLEX(*coef)(int), int k) : z0(0), coef(coef), k(k) {
 POWERSERIES::POWERSERIES(COMPLEX z0, COEF coef, int k) : z0(z0), coef(coef), k(k) {}
 POWERSERIES::POWERSERIES(COMPLEX z0, COMPLEX(*coef)(int), int k) : z0(z0), coef(coef), k(k) {}
 
+int POWERSERIES::findIterationCount(int p, int d) {
+	int s = 0, e = k-p+64*d;
+	int mid;
+	double a, b;
+	b = p-k + d*std::log2(k);
+	while((e-s)>=2){
+		mid = (e+s)/2;
+		a = std::log2(mid+d+2)*d - mid;
+		if(a<=b) e = mid;
+		else s = mid;
+	}
+
+	return e;
+}
 /**
  * @brief this calculates value of the d-th derivative of the POWERSERIES at z with precison \f$2^p\f$.
  * @remarks To approximate Infinite sum, this use partial sum.
@@ -53,7 +67,7 @@ COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z, int d) {
 	COMPLEX cur;
 	COMPLEX dz = z - z0;
 	INTEGER diffTerm(1);
-	int t = k-p + 32*d;
+	int t = findIterationCount(p,d);
 	
 	for(int i = 2;i<=d;i++)
 		diffTerm*=i;// to calculate (j+1)(j+2)...(j+d)
@@ -184,13 +198,13 @@ POWERSERIES POWERSERIES::differentiate(int d) {
 	else
 		return this->integralHelper(-d);
 }
-POWERSERIES POWERSERIES::continuation(const COMPLEX& z) {
+POWERSERIES POWERSERIES::continuation(const COMPLEX& z, int newK) {
 	COEF seq = ([=] (int j) -> COMPLEX {
 				INTEGER factorial(1);
 				for(int i=2;i<=j;i++)
 					factorial*=i;
 				return this->eval(z,j)/factorial;
 			});
-	return POWERSERIES(z,seq,2*k);
+	return POWERSERIES(z,seq, newK);
 }
 } //namespace iRRAM
