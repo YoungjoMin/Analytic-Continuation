@@ -38,6 +38,8 @@ POWERSERIES(COEF coef, int k);
 POWERSERIES(COMPLEX(*coef)(int), int k);
 POWERSERIES(COMPLEX z0, COEF coef, int k);
 POWERSERIES(COMPLEX z0, COMPLEX(*coef)(int), int k);
+POWERSERIES(const POWERSERIES& other);
+POWERSERIES(POWERSERIES&& other);
 
 friend POWERSERIES operator +(const POWERSERIES& f1, const POWERSERIES& f2);
 friend POWERSERIES operator -(const POWERSERIES& f1, const POWERSERIES& f2);
@@ -47,13 +49,18 @@ POWERSERIES& operator+=(const POWERSERIES& f);
 POWERSERIES& operator-=(const POWERSERIES& f);
 POWERSERIES& operator*=(const POWERSERIES& f);
 
+POWERSERIES& operator=(const POWERSERIES& other);
+POWERSERIES& operator=(POWERSERIES&& other);
 COMPLEX eval(const COMPLEX& z, int d=0);//only for nonnegative d.
 POWERSERIES differentiate(int d);//also for negative d. and return function has integral constant all 0.
 POWERSERIES continuation(const COMPLEX& z, int newK); //POWERSEREIS at point z
 COMPLEX evalHelper(int p, const COMPLEX& z, int d);
-private:
-
+~POWERSERIES();
+int memorizeCoef(int count);
 int findIterationCount(int p, int d);
+private:
+COMPLEX * coefMemory;
+int memCount;
 POWERSERIES differentiateHelper(int d);//for only differentiation (d>0)
 POWERSERIES integralHelper(int d);// for only integral (d>0)
 /**
@@ -70,5 +77,5 @@ COEF coef;
  */
 int k;
 };
+}//namespace iRRAM
 
-} //namespace iRRAM

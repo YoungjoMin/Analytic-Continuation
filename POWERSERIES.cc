@@ -5,14 +5,47 @@ namespace iRRAM{
  * @brief default constructor. assigns zero
  */
 POWERSERIES::POWERSERIES() {
+	memCount = -1;
+	coefMemory = NULL;
 	z0 = COMPLEX(0);
 	coef = ([] (int j) -> COMPLEX { return COMPLEX(0);});
 	k=1;
 }
-POWERSERIES::POWERSERIES(COEF coef, int k) : z0(0), coef(coef), k(k) {}
-POWERSERIES::POWERSERIES(COMPLEX(*coef)(int), int k) : z0(0), coef(coef), k(k) {}
-POWERSERIES::POWERSERIES(COMPLEX z0, COEF coef, int k) : z0(z0), coef(coef), k(k) {}
-POWERSERIES::POWERSERIES(COMPLEX z0, COMPLEX(*coef)(int), int k) : z0(z0), coef(coef), k(k) {}
+POWERSERIES::POWERSERIES(COEF coef, int k) : z0(0), coef(coef), k(k), memCount(-1), coefMemory(NULL){}
+POWERSERIES::POWERSERIES(COMPLEX(*coef)(int), int k) : z0(0), coef(coef), k(k), memCount(-1), coefMemory(NULL) {}
+POWERSERIES::POWERSERIES(COMPLEX z0, COEF coef, int k) : z0(z0), coef(coef), k(k), memCount(-1), coefMemory(NULL) {}
+POWERSERIES::POWERSERIES(COMPLEX z0, COMPLEX(*coef)(int), int k) : z0(z0), coef(coef), k(k), memCount(-1), coefMemory(NULL) {}
+
+POWERSERIES::POWERSERIES(const POWERSERIES& other) {
+	k = other.k;
+	coef = other.coef;
+	z0 = other.z0;
+	coefMemory = NULL;
+	memCount = -1;
+}
+POWERSERIES::POWERSERIES(POWERSERIES&& other) {
+	k = other.k;
+	coef = std::move(other.coef);
+	z0 = std::move(other.z0);
+	coefMemory = other.coefMemory;
+	memCount = other.memCount;
+	other.memCount = -1;
+	other.coefMemory = NULL;
+}
+POWERSERIES::~POWERSERIES() {
+	if(coefMemory!=NULL)
+		delete [] coefMemory;
+}
+
+int POWERSERIES::memorizeCoef(int count) {
+	coefMemory = new COMPLEX[count+1];//memorize coef(0), ... coef(count)
+	if(coefMemory==NULL)
+		throw;
+
+	for(int i = 0;i<=count;i++)
+		coefMemory[i] = coef(i);
+	return 1;
+}
 
 int POWERSERIES::findIterationCount(int p, int d) {
 	int s = 0, e = k-p+64*d;
@@ -68,12 +101,18 @@ COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z, int d) {
 	COMPLEX dz = z - z0;
 	INTEGER diffTerm(1);
 	int t = findIterationCount(p,d);
+	COEF CoefWithMem = ([=](int i)->COMPLEX{
+		if(i<=memCount)
+			return coefMemory[i];
+		else
+			return coef(i);
+	});
 	
 	for(int i = 2;i<=d;i++)
 		diffTerm*=i;// to calculate (j+1)(j+2)...(j+d)
 
 	for(int i = 0; i<=t;i++) {
-		cur = (coef(i+d)*pow)*diffTerm;// add i-th term of the d-th derivative of the 
+		cur = (CoefWithMem(i+d)*pow)*diffTerm;// add i-th term of the d-th derivative of the 
 		result = result + cur;
 
 		diffTerm*=(i+d+1);
@@ -162,7 +201,28 @@ POWERSERIES& POWERSERIES::operator *=(const POWERSERIES& f) {
 	*this = (*this)*f;
 	return *this;
 }
-
+POWERSERIES& POWERSERIES::operator=(const POWERSERIES& other) {
+	if(this == (&other))
+		return (*this);
+	k = other.k;
+	coef = other.coef;
+	z0 = other.z0;
+	coefMemory = NULL;
+	memCount = -1;
+	return (*this);
+}
+POWERSERIES& POWERSERIES::operator=(POWERSERIES&& other) {
+	if(this == (&other))
+		return (*this);
+	k = other.k;
+	coef = std::move(other.coef);
+	z0 = std::move(other.z0);
+	coefMemory = other.coefMemory;
+	memCount = other.memCount;
+	other.memCount = -1;
+	other.coefMemory = NULL;
+	return (*this);
+}
 
 POWERSERIES POWERSERIES::differentiateHelper(int d) {
 	COEF seq = ([=] (int j) -> COMPLEX {
@@ -200,10 +260,19 @@ POWERSERIES POWERSERIES::differentiate(int d) {
 }
 POWERSERIES POWERSERIES::continuation(const COMPLEX& z, int newK) {
 	COEF seq = ([=] (int j) -> COMPLEX {
+				static int prev=0;
+				static INTEGER prevFactorial(0);
 				INTEGER factorial(1);
-				for(int i=2;i<=j;i++)
-					factorial*=i;
-				return this->eval(z,j)/factorial;
+				if( (prev+1)== j) {
+					factorial = prevFactorial*j;
+				}
+				else {
+					for(int i=2;i<=j;i++)
+						factorial*=i;
+				}
+				prev = j;
+				prevFactorial = std::move(factorial);
+				return this->eval(z,j)/prevFactorial;
 			});
 	return POWERSERIES(z,seq, newK);
 }

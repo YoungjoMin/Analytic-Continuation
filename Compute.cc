@@ -3,7 +3,12 @@
 # include <chrono>
 
 using namespace iRRAM;
-
+COMPLEX logSeq(int k) {
+	if(k==0)
+		return COMPLEX(0);
+	else
+		return COMPLEX(REAL(1)/REAL(k));
+}
 
 COMPLEX fiboSeq(int k) {
 	if(k<=1)
@@ -60,28 +65,66 @@ void ContiCompTime()
 {
 	COMPLEX z;
 	int n[2] = {0, 1};
-	int p[4] = {0, -10, -100, -1000};
-		POWERSERIES g[5];
-		POWERSERIES f(InvXSeq, 1);
-		g[0] = f;
-		g[1] = g[0].continuation(z,1);
-		g[2] = g[1].continuation(z,1);
-		g[3] = g[2].continuation(z,1);
-		g[4] = g[3].continuation(z,1);
-	for(int i = 0;i<4;i++) {
-		int j=2;
-		for(int j = 0;j<5;j++) {
-			f = f.continuation(z,1);
-			auto s = std::chrono::system_clock::now();
-			COMPLEX real = g[j].evalHelper(p[i], z, 0);
-			auto e = std::chrono::system_clock::now();
-			std::chrono::duration<double> diff = e-s;
-			std::cout<<"with i = "<<i<<" , j = "<<j<<" and time : "<< diff.count()<<"s\n";
-		}
+	POWERSERIES g[6];
+	POWERSERIES f(InvXSeq, 1);
+	g[0] = f;
+	g[1] = g[0].continuation(z,1);
+	g[1].memorizeCoef(5000);
+	std::cout<<"memorize g1 OK\n";
+	g[2] = g[1].continuation(z,1);
+	g[2].memorizeCoef(1500);
+	std::cout<<"memorize g2 OK\n";
+	g[3] = g[2].continuation(z,1);
+	g[3].memorizeCoef(200);
+	std::cout<<"memorize g2 OK\n";
+	g[4] = g[3].continuation(z,1);
+	//g[4].memorizeCoef(500);
+	g[5] = g[4].continuation(z,1);
+	for(int j = 0;j<6;j++) {
+		f = f.continuation(z,1);
+		auto s = std::chrono::system_clock::now();
+		COMPLEX real = g[j].evalHelper(0, z, 0);
+		auto e = std::chrono::system_clock::now();
+		std::chrono::duration<double> diff = e-s;
+		std::cout<<"with j = "<<j<<" and time : "<< diff.count()<<"s\n";
 	}
 }
+
+void iterCnt()
+{
+	int cnt[6];
+	POWERSERIES f;
+	cnt[0] = f.findIterationCount(0,0);
+	cnt[1] = f.findIterationCount(0,cnt[0]);
+	cnt[2] = f.findIterationCount(0,cnt[1]);
+	cnt[3] = f.findIterationCount(0,cnt[2]);
+	cnt[4] = f.findIterationCount(0,cnt[3]);
+	cnt[5] = f.findIterationCount(0,cnt[4]);
+	std::cout<<cnt[0]<<'\n'
+		<<cnt[1]<<'\n'
+		<<cnt[2]<<'\n'
+		<<cnt[3]<<'\n'
+		<<cnt[4]<<'\n'
+		<<cnt[5]<<'\n';
+}
+
 void compute()
 {
-	//EvalCompTime();
-	ContiCompTime();
+	REAL ang = pi()/6;
+
+	COMPLEX next(cos(ang),sin(ang));
+	POWERSERIES f(COMPLEX(1),logSeq,1);
+	POWERSERIES g = f.continuation(next,1);
+	COMPLEX val0 = f.eval(COMPLEX(1));
+	cout<<val0._real<<"\n";
+	cout<<val0._imag<<"\n";
+	COMPLEX val1 = f.eval(next);
+	cout<<val1._real<<"\n";
+	cout<<val1._imag<<"\n";
+	COMPLEX val2 = g.eval(COMPLEX(1));
+	cout<<val2._real<<"\n";
+	cout<<val2._imag<<"\n";
+	COMPLEX val3 = g.eval(next);
+	cout<<val3._real<<"\n";
+	cout<<val3._imag<<"\n";
 }
