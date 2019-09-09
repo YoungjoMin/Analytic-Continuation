@@ -38,7 +38,7 @@ COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z) {
 COMPLEX POWERSERIES::eval(const COMPLEX& z) {
 	static POWERSERIES * Tfp; //using capture is not able for iRRAM::limit. so, use static copies
 	Tfp = this;
-	COMPLEX (*lambda)(int, const COMPLEX& z)  = ([] (int p, const COMPLEX& z) {
+	COMPLEX (*lambda)(int, const COMPLEX& z)  = ([] (int p, const COMPLEX& z) -> COMPLEX{
 			return Tfp->evalHelper(p,z);
 	}); // to use iRRAM::limit
 
