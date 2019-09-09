@@ -25,7 +25,7 @@ ANALYTIC& operator*=(const ANALYTIC& f);
 
 ANALYTIC& operator=(const ANALYTIC& other);
 
-COMPLEX eval(const COMPLEX& z, INTEGER d);//only for nonnegative d.
+COMPLEX eval(const COMPLEX& z);//only for nonnegative d.
 ANALYTIC differentiate(INTEGER d);//also for negative d. and return function has integral constant all 0.
 private:
 

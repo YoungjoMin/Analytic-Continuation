@@ -21,7 +21,7 @@ COMPLEX ANALYTIC::evalHelper(int p, const COMPLEX& z) {
 	COMPLEX dz = z - x;
 	INTEGER t = size(L)-p;//size(L) is smallest i s.t. |L| < 2^i
 
-	for(INTEGER i = 0; i<=t;i++) {
+	for(INTEGER i = 0; i<=t;i+=1) {
 		cur = (coef(i)*pow);//i-th term of the series 
 		result = result + cur;
 
@@ -62,9 +62,8 @@ ANALYTIC operator *(const ANALYTIC& f1, const ANALYTIC& f2) {
 	//suppose f1 and f2 has same x
 COEF lambda = ([=] (INTEGER j) -> COMPLEX {
 					COMPLEX result(0);
-					INTEGER k(j);
-					for(INTEGER i = 0;i<=j;i++, k--)
-						result= result + (f1.coef(i)*f2.coef(k));
+					for(INTEGER i = 0;i<=j;i+=1)
+						result= result + (f1.coef(i)*f2.coef(j-i));
 					return result;
 		}	);
 	return ANALYTIC(lambda, f1.L*f2.L,std::max(f1.l,f2.l),f1.x);
@@ -94,13 +93,13 @@ ANALYTIC& ANALYTIC::operator=(const ANALYTIC& other) {
 ANALYTIC ANALYTIC::differentiateHelper(INTEGER d) {
 	COEF lambda = ([=] (INTEGER j) -> COMPLEX {
 			INTEGER diffTerm(1);
-			for(INTEGER i = 1;i<=d;i++)
+			for(INTEGER i = 1;i<=d;i+=1)
 			    diffTerm*=(i+j);
 			return (coef(j+d))*diffTerm;
 			});
 	INTEGER factorial =(1);
 	INTEGER newl = l<<1;
-	for(INTEGER i = 2;i<=d;i++){
+	for(INTEGER i = 2;i<=d;i+=1){
 		factorial*=i;
 	}
 	INTEGER newL = L* factorial * (newl^d);
@@ -116,14 +115,14 @@ ANALYTIC ANALYTIC::integralHelper(INTEGER d) {
 				return COMPLEX(0);
 
 			INTEGER intTerm(1);
-			for(INTEGER i = 0;i<d;i++)
+			for(INTEGER i = 0;i<d;i+=1)
 					intTerm*=(j-i);
 			return (coef(j-d))/intTerm;
 			});
 	return ANALYTIC(lambda, L, l, x);
 }
 
-ANALYTIC ANALYTIC::differentiate(int d) {
+ANALYTIC ANALYTIC::differentiate(INTEGER d) {
 	if(d==0)
 		return *this;
 	if(d>0)

@@ -7,9 +7,9 @@ POWERSERIES::POWERSERIES() {
 	coef = ([] (int j) -> COMPLEX { return COMPLEX(0);});
 	K = k= INTEGER(1);
 }
-POWERSERIES::POWERSERIES(COEF coef, INTEGER K, INTEGER k, COMPLEX w = COMPLEX(0))
+POWERSERIES::POWERSERIES(COEF coef, INTEGER K, INTEGER k, COMPLEX w )
 	 : coef(coef), K(K), k(k), w(w) {}
-POWERSERIES::POWERSERIES(COMPLEX(*coef)(INTEGER), INTEGER K, INTEGER k, COMPLEX w = COMPLEX(0))
+POWERSERIES::POWERSERIES(COMPLEX(*coef)(INTEGER), INTEGER K, INTEGER k, COMPLEX w )
 	 : coef(coef), K(K), k(k), w(w) {}
 
 POWERSERIES::POWERSERIES(const POWERSERIES& other) {
@@ -26,7 +26,7 @@ COMPLEX POWERSERIES::evalHelper(int p, const COMPLEX& z) {
 	COMPLEX dz = z - w;
 	INTEGER t = size(K)-p;//size(K) is smallest i s.t. |K| < 2^i
 
-	for(INTEGER i = 0; i<=t;i++) {
+	for(INTEGER i = 0; i<=t;i+=1) {
 		cur = (coef(i)*pow);//i-th term of the series 
 		result = result + cur;
 
@@ -70,9 +70,8 @@ POWERSERIES operator *(const POWERSERIES& f1, const POWERSERIES& f2) {
 	//suppose f1 and f2 has same w
 COEF lambda = ([=] (INTEGER j) -> COMPLEX {
 					COMPLEX result(0);
-					INTEGER k(j);
-					for(INTEGER i = 0;i<=j;i++, k--)
-						result= result + (f1.coef(i)*f2.coef(k));
+					for(INTEGER i = 0;i<=j;i+=1)
+						result= result + (f1.coef(i)*f2.coef(j-i));
 					return result;
 		}	);
 	return POWERSERIES(lambda, f1.K*f2.K,f1.k+f2.k,f1.w);
@@ -102,7 +101,7 @@ POWERSERIES& POWERSERIES::operator=(const POWERSERIES& other) {
 POWERSERIES POWERSERIES::differentiateHelper(INTEGER d) {
 	COEF lambda = ([=] (INTEGER j) -> COMPLEX {
 			INTEGER diffTerm(1);
-			for(INTEGER i = 1;i<=d;i++)
+			for(INTEGER i = 1;i<=d;i+=1)
 			    diffTerm*=(i+j);
 			return (coef(j+d))*diffTerm;
 			});
@@ -118,14 +117,14 @@ POWERSERIES POWERSERIES::integralHelper(INTEGER d) {
 				return COMPLEX(0);
 
 			INTEGER intTerm(1);
-			for(INTEGER i = 0;i<d;i++)
+			for(INTEGER i = 0;i<d;i+=1)
 					intTerm*=(j-i);
 			return (coef(j-d))/intTerm;
 			});
 	return POWERSERIES(lambda, K, k, w);
 }
 
-POWERSERIES POWERSERIES::differentiate(int d) {
+POWERSERIES POWERSERIES::differentiate(INTEGER d) {
 	if(d==0)
 		return *this;
 	if(d>0)
