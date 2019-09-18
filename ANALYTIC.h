@@ -11,6 +11,7 @@ using COEF = std::function<COMPLEX(INTEGER)>;
 class ANALYTIC
 {
 public:
+ANALYTIC();
 ANALYTIC(COEF coef, INTEGER L, INTEGER l, REAL x);
 ANALYTIC(COMPLEX(*coef)(INTEGER), INTEGER L, INTEGER l, REAL x);
 ANALYTIC(const ANALYTIC& other);
@@ -27,15 +28,16 @@ ANALYTIC& operator=(const ANALYTIC& other);
 
 COMPLEX eval(const COMPLEX& z);//only for nonnegative d.
 ANALYTIC differentiate(INTEGER d);//also for negative d. and return function has integral constant all 0.
+ANALYTIC continuation(REAL x);
+COMPLEX evalHelper(int p, const COMPLEX& z);
+INTEGER L, l;
 private:
 
-COMPLEX evalHelper(int p, const COMPLEX& z);
 ANALYTIC differentiateHelper(INTEGER d);//for only differentiation (d>0)
 ANALYTIC integralHelper(INTEGER d);// for only integral (d>0)
 
 REAL x;
 COEF coef;
-INTEGER K, k;
 };
 
 }//namespace iRRAM

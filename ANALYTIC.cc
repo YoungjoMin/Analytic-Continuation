@@ -1,11 +1,17 @@
 # include "ANALYTIC.h"
 
 namespace iRRAM{
+ANALYTIC::ANALYTIC()
+{
+	coef = ([] (INTEGER i) -> COMPLEX { return(0);});//constant zero function
+	l = L = 1;
+	x = REAL(0);
+}
 
 ANALYTIC::ANALYTIC(COEF coef, INTEGER L, INTEGER l, REAL x)
-	 : coef(coef), L(L), l(l), w(w) {}
+	 : coef(coef), L(L), l(l), x(x) {}
 ANALYTIC::ANALYTIC(COMPLEX(* coef)(INTEGER), INTEGER L, INTEGER l, REAL x)
-	 : coef(coef), L(L), l(l), w(w) {}
+	 : coef(coef), L(L), l(l), x(x) {}
 
 ANALYTIC::ANALYTIC(const ANALYTIC& other) {
 	coef = other.coef;
@@ -21,6 +27,7 @@ COMPLEX ANALYTIC::evalHelper(int p, const COMPLEX& z) {
 	COMPLEX dz = z - x;
 	INTEGER t = size(L)-p;//size(L) is smallest i s.t. |L| < 2^i
 
+	cout<<"number of iteration : "<<t<<"\n";
 	for(INTEGER i = 0; i<=t;i+=1) {
 		cur = (coef(i)*pow);//i-th term of the series 
 		result = result + cur;
@@ -97,7 +104,7 @@ ANALYTIC ANALYTIC::differentiateHelper(INTEGER d) {
 			    diffTerm*=(i+j);
 			return (coef(j+d))*diffTerm;
 			});
-	INTEGER factorial =(1);
+	INTEGER factorial(1);
 	INTEGER newl = l<<1;
 	for(INTEGER i = 2;i<=d;i+=1){
 		factorial*=i;
@@ -129,6 +136,18 @@ ANALYTIC ANALYTIC::differentiate(INTEGER d) {
 		return this->differentiateHelper(d);
 	else
 		return this->integralHelper(-d);
+}
+ANALYTIC ANALYTIC::continuation(REAL newX) {
+	COEF lambda = ([=] (INTEGER j) -> COMPLEX { 
+		ANALYTIC jthDer = this->differentiate(j);
+		INTEGER factorial(1);
+		for(INTEGER i = 2;i<=j;i+=1){
+			factorial*=j;
+		return jthDer.eval(newX)/factorial;
+	}
+
+	});
+	return ANALYTIC(lambda, L, l, newX);
 }
 
 } //namespace iRRAM

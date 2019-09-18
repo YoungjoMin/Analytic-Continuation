@@ -7,9 +7,9 @@ POWERSERIES::POWERSERIES() {
 	coef = ([] (int j) -> COMPLEX { return COMPLEX(0);});
 	K = k= INTEGER(1);
 }
-POWERSERIES::POWERSERIES(COEF coef, INTEGER K, INTEGER k, COMPLEX w )
+POWERSERIES::POWERSERIES(COEF coef, INTEGER K, INTEGER k, COMPLEX w)
 	 : coef(coef), K(K), k(k), w(w) {}
-POWERSERIES::POWERSERIES(COMPLEX(*coef)(INTEGER), INTEGER K, INTEGER k, COMPLEX w )
+POWERSERIES::POWERSERIES(COMPLEX(*coef)(INTEGER), INTEGER K, INTEGER k, COMPLEX w)
 	 : coef(coef), K(K), k(k), w(w) {}
 
 POWERSERIES::POWERSERIES(const POWERSERIES& other) {
@@ -105,7 +105,12 @@ POWERSERIES POWERSERIES::differentiateHelper(INTEGER d) {
 			    diffTerm*=(i+j);
 			return (coef(j+d))*diffTerm;
 			});
-	INTEGER newK = K*((k*d)^d);
+
+	INTEGER temp=1;
+	for(INTEGER i = 1;i<=d;i+=1)
+			temp*=(d+i);
+	temp=temp<<d;
+	INTEGER newK = K*(k^d)*temp;
 
 	return POWERSERIES(lambda, newK, k<<1, w);//(k<<1 == 2k)
 }
