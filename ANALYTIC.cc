@@ -27,7 +27,6 @@ COMPLEX ANALYTIC::evalHelper(int p, const COMPLEX& z) {
 	COMPLEX dz = z - x;
 	INTEGER t = size(L)-p;//size(L) is smallest i s.t. |L| < 2^i
 
-	cout<<"number of iteration : "<<t<<"\n";
 	for(INTEGER i = 0; i<=t;i+=1) {
 		cur = (coef(i)*pow);//i-th term of the series 
 		result = result + cur;
@@ -138,13 +137,11 @@ ANALYTIC ANALYTIC::differentiate(INTEGER d) {
 		return this->integralHelper(-d);
 }
 ANALYTIC ANALYTIC::continuation(REAL newX) {
-	COEF lambda = ([=] (INTEGER j) -> COMPLEX { 
-		ANALYTIC jthDer = this->differentiate(j);
+	COEF lambda = ([=] (INTEGER j) -> COMPLEX {
 		INTEGER factorial(1);
-		for(INTEGER i = 2;i<=j;i+=1){
+		for(INTEGER i = 2;i<=j;i+=1)
 			factorial*=j;
-		return jthDer.eval(newX)/factorial;
-	}
+		return this->differentiate(j).eval(newX)/factorial;
 
 	});
 	return ANALYTIC(lambda, L, l, newX);
